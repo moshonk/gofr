@@ -1,0 +1,50 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEASubFacilityTypeCodeSystem",
+  "id": "camdhea-sub-facility-type",
+  "title": "CamDHEA Sub-Facility Type",
+  "description": "Type classification of sub-facility service delivery points.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-sub-facility-type",
+  "concept": [
+    {
+      "code": "Ward",
+      "display": "Ward",
+      "definition": "Ward"
+    },
+    {
+      "code": "IsolationUnit",
+      "display": "Isolation Unit",
+      "definition": "Isolation Unit"
+    },
+    {
+      "code": "EmbeddedLaboratory",
+      "display": "Embedded Laboratory",
+      "definition": "Embedded Laboratory"
+    },
+    {
+      "code": "MobileClinic",
+      "display": "Mobile Clinic",
+      "definition": "Mobile Clinic"
+    },
+    {
+      "code": "TemporaryServicePoint",
+      "display": "Temporary Service Point",
+      "definition": "Temporary Service Point"
+    },
+    {
+      "code": "BloodCollectionPoint",
+      "display": "Blood Collection Point",
+      "definition": "Blood Collection Point"
+    },
+    {
+      "code": "Other",
+      "display": "Other",
+      "definition": "Other"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 7
+}

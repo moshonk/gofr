@@ -1,0 +1,45 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEALicenceStatusCodeSystem",
+  "id": "camdhea-licence-status",
+  "title": "CamDHEA Licence Status",
+  "description": "Current licensing status of the facility.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-licence-status",
+  "concept": [
+    {
+      "code": "Active",
+      "display": "Active",
+      "definition": "Active"
+    },
+    {
+      "code": "Expired",
+      "display": "Expired",
+      "definition": "Expired"
+    },
+    {
+      "code": "Suspended",
+      "display": "Suspended",
+      "definition": "Suspended"
+    },
+    {
+      "code": "Revoked",
+      "display": "Revoked",
+      "definition": "Revoked"
+    },
+    {
+      "code": "Pending",
+      "display": "Pending",
+      "definition": "Pending"
+    },
+    {
+      "code": "NotApplicable",
+      "display": "Not Applicable",
+      "definition": "Not Applicable"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 6
+}

@@ -1,0 +1,30 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEACatchmentComputationMethodCodeSystem",
+  "id": "camdhea-catchment-computation-method",
+  "title": "CamDHEA Catchment Computation Method",
+  "description": "Method used to compute catchment population count.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-catchment-computation-method",
+  "concept": [
+    {
+      "code": "RegisteredPatients",
+      "display": "Registered Patients",
+      "definition": "Count of active HID records with matching village address"
+    },
+    {
+      "code": "EstimatedFromCensus",
+      "display": "Estimated from Census",
+      "definition": "Projected from national census data using village population estimates"
+    },
+    {
+      "code": "Combined",
+      "display": "Combined",
+      "definition": "Both methods used with registered patients as primary"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 3
+}

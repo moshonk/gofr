@@ -1,0 +1,18 @@
+{
+  "resourceType": "SearchParameter",
+  "id": "gofr-search-operational-status",
+  "url": "http://gofr.org/fhir/SearchParameter/gofr-search-operational-status",
+  "name": "Search by operational status",
+  "description": "Search by operational status",
+  "status": "active",
+  "experimental": false,
+  "code": "operationalstatus",
+  "base": [
+    "Location"
+  ],
+  "type": "token",
+  "expression": "Location.operationalStatus",
+  "target": [
+    "Location"
+  ]
+}

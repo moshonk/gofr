@@ -1,0 +1,17 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "CamDHEACadreCategoryValueSet",
+  "id": "camdhea-cadre-category",
+  "title": "CamDHEA Cadre Category ValueSet",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/ValueSet/camdhea-cadre-category",
+  "date": "2026-04-11",
+  "compose": {
+    "include": [
+      {
+        "system": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-cadre-category"
+      }
+    ]
+  }
+}

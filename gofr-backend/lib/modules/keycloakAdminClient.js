@@ -41,17 +41,22 @@ const loadTasksToKeycloak = () => new Promise(async (resolve, reject) => {
   if (installed) {
     return resolve();
   }
-  const fshDir = config.get('builtFSHFIles');
-  if (!fshDir) {
+  let fshDirs = config.get('builtFSHFIles');
+  if (!fshDirs) {
     logger.error('FSH dir not specified, cant load tasks');
     return resolve();
+  }
+  if (!Array.isArray(fshDirs)) {
+    fshDirs = [fshDirs];
   }
   const clients = await kcAdminClient.clients.find();
   const client = clients.find(clt => clt.clientId === config.get('keycloak:UIClientId'));
   if (!client) {
     return reject('no UI Client ID');
   }
-  mixin.getFilesFromDir(`${__dirname}/../${fshDir}`).then((files) => {
+  const allDirPromises = fshDirs.map(fshDir => mixin.getFilesFromDir(`${__dirname}/../${fshDir}`));
+  Promise.all(allDirPromises).then((fileArrays) => {
+    const files = [].concat(...fileArrays);
     const filesPromises = [];
     files.forEach((file) => {
       filesPromises.push(new Promise((fresolve, freject) => {
@@ -195,13 +200,18 @@ const loadTasksToKeycloak = () => new Promise(async (resolve, reject) => {
 });
 
 const loadRolesToKeycloak = () => new Promise(async (resolve, reject) => {
-  const fshDir = config.get('builtFSHFIles');
+  let fshDirs = config.get('builtFSHFIles');
+  if (!Array.isArray(fshDirs)) {
+    fshDirs = [fshDirs];
+  }
   const clients = await kcAdminClient.clients.find();
   const client = clients.find(clt => clt.clientId === config.get('keycloak:UIClientId'));
   if (!client) {
     return reject('No UI client ID');
   }
-  mixin.getFilesFromDir(`${__dirname}/../${fshDir}`).then((files) => {
+  const allDirPromises = fshDirs.map(fshDir => mixin.getFilesFromDir(`${__dirname}/../${fshDir}`));
+  Promise.all(allDirPromises).then((fileArrays) => {
+    const files = [].concat(...fileArrays);
     const filesPromises = [];
     files.forEach((file) => {
       filesPromises.push(new Promise((fresolve, freject) => {

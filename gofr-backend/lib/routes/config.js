@@ -104,6 +104,7 @@ router.get('/questionnaire/:questionnaire', (req, res) => {
     };
     const processQuestionnaireItems = async (items) => {
       let vueOutput = '';
+      if (!items) return vueOutput;
       for (const item of items) {
         let displayType;
         if (item.linkId.includes('#')) {
@@ -134,7 +135,7 @@ router.get('/questionnaire/:questionnaire', (req, res) => {
         } else if (item.readOnly) {
           vueOutput += `<gofr-hidden path="${item.linkId}" label="${
             item.text}"`;
-          if (item.answerOption[0].initialSelected) {
+          if (item.answerOption && item.answerOption[0] && item.answerOption[0].initialSelected) {
             const answerTypes = Object.keys(item.answerOption[0]);
             for (const answerType of answerTypes) {
               if (answerType.startsWith('value')) {
@@ -154,11 +155,20 @@ router.get('/questionnaire/:questionnaire', (req, res) => {
           const minmax = ['Date', 'DateTime', 'Instant', 'Time', 'Decimal', 'Integer', 'PositiveInt',
             'UnsignedInt', 'Quantity'];
           if (item.definition) {
-            field = await fhirDefinition.getFieldDefinition(item.definition);
+            try {
+              field = await fhirDefinition.getFieldDefinition(item.definition);
+            } catch (defErr) {
+              logger.error(`Failed to get field definition for ${item.definition}: ${defErr}`);
+              field = {};
+            }
             if (itemType === 'reference' && field && field.type && field.type[0] && field.type[0].targetProfile) {
               vueOutput += ` targetProfile="${field.type[0].targetProfile[0]}"`;
-              const targetResource = await getProfileResource(field.type[0].targetProfile[0]);
-              vueOutput += ` targetResource="${targetResource}"`;
+              try {
+                const targetResource = await getProfileResource(field.type[0].targetProfile[0]);
+                vueOutput += ` targetResource="${targetResource}"`;
+              } catch (profErr) {
+                logger.error(`Failed to get profile resource for ${field.type[0].targetProfile[0]}: ${profErr}`);
+              }
             }
             for (const mm of minmax) {
               for (const type of ['min', 'max']) {

@@ -1,0 +1,351 @@
+{
+  "resourceType": "Basic",
+  "id": "gofr-page-facility-add-request",
+  "meta": {
+    "profile": [
+      "http://gofr.org/fhir/StructureDefinition/gofr-page"
+    ]
+  },
+  "code": {
+    "coding": [
+      {
+        "code": "page",
+        "system": "http://gofr.org/fhir/CodeSystem/gofr-resource-codesystem"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-display",
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Request Adding Facility"
+        },
+        {
+          "url": "resource",
+          "valueReference": {
+            "reference": "StructureDefinition/gofr-facility-add-request"
+          }
+        },
+        {
+          "url": "search",
+          "valueString": "Facility Name|name"
+        },
+        {
+          "url": "requestUpdatingResource",
+          "valueReference": {
+            "reference": "StructureDefinition/gofr-facility"
+          }
+        },
+        {
+          "url": "search",
+          "valueString": "Facility Type|type[1].text"
+        },
+        {
+          "url": "search",
+          "valueString": "Facility Physical Type|physicalType.text"
+        },
+        {
+          "url": "search",
+          "valueString": "Parent|partOf.reference"
+        },
+        {
+          "url": "search",
+          "valueString": "Status|status"
+        },
+        {
+          "url": "search",
+          "valueString": "Longitute|position.longitude"
+        },
+        {
+          "url": "search",
+          "valueString": "Latitude|position.latitude"
+        },
+        {
+          "url": "search",
+          "valueString": "Request Status|extension.where(url='http://gofr.org/fhir/StructureDefinition/request-status').valueCoding.display"
+        },
+        {
+          "url": "search",
+          "valueString": "Facility Level|extension.where(url='http://camdhea.gov.kh/fhir/StructureDefinition/facility-level').valueCodeableConcept.coding.display"
+        },
+        {
+          "url": "search",
+          "valueString": "Ownership|extension.where(url='http://camdhea.gov.kh/fhir/StructureDefinition/ownership-type').valueCodeableConcept.coding.display"
+        },
+        {
+          "url": "filter",
+          "valueString": "Name|name:contains"
+        },
+        {
+          "url": "filter",
+          "valueString": "Type|type|http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-type"
+        },
+        {
+          "url": "filter",
+          "valueString": "Physical Type|physicalType|http://hl7.org/fhir/ValueSet/location-physical-type"
+        },
+        {
+          "url": "filter",
+          "valueString": "Request Status|requeststatus|request-status-valueset"
+        },
+        {
+          "url": "filter",
+          "valueString": "Facility Level|facilitylevel|http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-level"
+        },
+        {
+          "url": "filter",
+          "valueString": "Ownership|ownershiptype|http://camdhea.gov.kh/fhir/ValueSet/camdhea-ownership-type"
+        },
+        {
+          "extension": [
+            {
+              "url": "path",
+              "valueString": "position.longitude"
+            }
+          ],
+          "url": "field"
+        },
+        {
+          "extension": [
+            {
+              "url": "path",
+              "valueString": "position.latitude"
+            }
+          ],
+          "url": "field"
+        },
+        {
+          "extension": [
+            {
+              "url": "readOnlyIfSet",
+              "valueBoolean": true
+            },
+            {
+              "url": "path",
+              "valueString": "Location.physicalType.coding"
+            }
+          ],
+          "url": "field"
+        },
+        {
+          "extension": [
+            {
+              "url": "readOnlyIfSet",
+              "valueBoolean": true
+            },
+            {
+              "url": "path",
+              "valueString": "Location.extension:requestStatus"
+            }
+          ],
+          "url": "field"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Basic Details"
+        },
+        {
+          "url": "description",
+          "valueString": "Basic Details"
+        },
+        {
+          "url": "name",
+          "valueString": "Basic Details"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.name"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.alias"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.descriptions"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.status"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.type"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.partOf"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.description"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.physicalType"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:requestStatus"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Classification"
+        },
+        {
+          "url": "description",
+          "valueString": "Facility Classification"
+        },
+        {
+          "url": "name",
+          "valueString": "Classification"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:facilityLevel"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:ownershipType"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.operationalStatus"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Geo-Coordinates"
+        },
+        {
+          "url": "description",
+          "valueString": "Facility Geo-Coordinates"
+        },
+        {
+          "url": "name",
+          "valueString": "Geo-Coordinates"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.position"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:coordinateAccuracy"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:googleMapsLink"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Identifiers"
+        },
+        {
+          "url": "description",
+          "valueString": "Facility Identifiers"
+        },
+        {
+          "url": "name",
+          "valueString": "Identifiers"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.identifier"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Address"
+        },
+        {
+          "url": "description",
+          "valueString": "Facility Address"
+        },
+        {
+          "url": "name",
+          "valueString": "Address"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.address"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Administrative Location"
+        },
+        {
+          "url": "description",
+          "valueString": "Administrative Location Codes"
+        },
+        {
+          "url": "name",
+          "valueString": "Administrative Location"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:administrativeLocation"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Licensing"
+        },
+        {
+          "url": "description",
+          "valueString": "Licence Status and Details"
+        },
+        {
+          "url": "name",
+          "valueString": "Licensing"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:licenceStatus"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:licensingAuthority"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:licenceDates"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    }
+  ]
+}

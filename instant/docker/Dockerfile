@@ -1,10 +1,12 @@
-FROM node:fermium
+FROM node:18-bullseye
 
 # for wget
 RUN apt-get -qq update && apt-get install -y -qq git && apt-get install -y --no-install-recommends wget
 
 ARG branch=master
-RUN git clone --branch ${branch} https://github.com/intrahealth/gofr /src/
+#RUN git clone --branch ${branch} https://github.com/intrahealth/gofr /src/
+# Copy from local instead of cloning from repo
+COPY . /src/
 
 # install dependencies
 # ADD package-lock.json /src/

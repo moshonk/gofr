@@ -25,5 +25,10 @@ If you have ZenHub installed, you may view the [2021 roadmap](https://github.com
 - For open monthly discussions, join the [OpenHIE Facility Registry Community](https://wiki.ohie.org/display/SUB/Facility+Registry+Community).
 - Search through or create an [issue](https://github.com/intrahealth/gofr/issues).
 
+## Copilot Customizations
+- Workspace Copilot customizations are documented in [.github/CUSTOMIZATIONS.md](../.github/CUSTOMIZATIONS.md).
+- Prompt files can be run as slash commands in chat.
+- Custom agents (`GOFR Review`, `GOFR Docs Review`) are available in the agent picker.
+
 ## License
 GOFR is distributed under the Apache 2.0 license.

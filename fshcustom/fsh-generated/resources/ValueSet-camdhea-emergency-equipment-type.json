@@ -1,0 +1,17 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "CamDHEAEmergencyEquipmentTypeValueSet",
+  "id": "camdhea-emergency-equipment-type",
+  "title": "CamDHEA Emergency Equipment Type ValueSet",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/ValueSet/camdhea-emergency-equipment-type",
+  "date": "2026-04-11",
+  "compose": {
+    "include": [
+      {
+        "system": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-emergency-equipment-type"
+      }
+    ]
+  }
+}

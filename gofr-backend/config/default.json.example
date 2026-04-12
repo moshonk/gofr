@@ -53,7 +53,7 @@
       }
     }
   },
-  "builtFSHFIles": "../../fshmcsd/fsh-generated/resources",
+  "builtFSHFIles": ["../../fshmcsd/fsh-generated/resources", "../../fshcustom/fsh-generated/resources"],
   "workflow": {
     "processor": {},
     "questionnaire": {}
@@ -83,7 +83,7 @@
       "password": ""
     },
     "fakeOrgId": "eac583d2-d1ba-11e8-a8d5-f2801f1b9fd1",
-    "fakeOrgName": "Taifafeki",
+    "fakeOrgName": "Cambodia",
     "cacheTime": 1200,
     "registryDB": "DEFAULT"
   },

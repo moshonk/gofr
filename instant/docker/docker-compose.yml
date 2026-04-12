@@ -56,7 +56,8 @@ services:
 
   gofr:
     container_name: gofr
-    image: intrahealth/gofr:latest
+    #image: intrahealth/gofr:latest
+    image: moshonk/gofr:latest
     depends_on:
       - fhir
     environment:

@@ -1,0 +1,40 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEAIdentifierTypeCodeSystem",
+  "id": "camdhea-identifier-type",
+  "title": "CamDHEA Identifier Type",
+  "description": "Types of facility identifiers in the CamDHEA facility registry.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-identifier-type",
+  "concept": [
+    {
+      "code": "LegacyHFID",
+      "display": "Legacy HF ID",
+      "definition": "Legacy MFL sequential identifier (H followed by 4-digit sequence)"
+    },
+    {
+      "code": "LegacyHFCode",
+      "display": "Legacy HF Code",
+      "definition": "Legacy MFL geographic code encoding province, OD, and sequence"
+    },
+    {
+      "code": "MoP",
+      "display": "Ministry of Planning",
+      "definition": "Ministry of Planning facility code"
+    },
+    {
+      "code": "HSD",
+      "display": "HSD Facility ID",
+      "definition": "Department of Hospital Services facility identifier for larger private facilities"
+    },
+    {
+      "code": "OWS",
+      "display": "OWS Registration ID",
+      "definition": "One Window Service registration identifier for smaller private facilities"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 5
+}

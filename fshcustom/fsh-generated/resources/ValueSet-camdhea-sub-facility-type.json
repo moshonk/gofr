@@ -1,0 +1,17 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "CamDHEASubFacilityTypeValueSet",
+  "id": "camdhea-sub-facility-type",
+  "title": "CamDHEA Sub-Facility Type ValueSet",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/ValueSet/camdhea-sub-facility-type",
+  "date": "2026-04-11",
+  "compose": {
+    "include": [
+      {
+        "system": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-sub-facility-type"
+      }
+    ]
+  }
+}

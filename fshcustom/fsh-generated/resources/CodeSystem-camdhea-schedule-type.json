@@ -1,0 +1,30 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEAScheduleTypeCodeSystem",
+  "id": "camdhea-schedule-type",
+  "title": "CamDHEA Schedule Type",
+  "description": "Type of operating schedule for a facility.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-schedule-type",
+  "concept": [
+    {
+      "code": "Regular",
+      "display": "Regular",
+      "definition": "Standard outpatient hours"
+    },
+    {
+      "code": "Emergency",
+      "display": "Emergency",
+      "definition": "24/7 emergency service availability"
+    },
+    {
+      "code": "OnCall",
+      "display": "On-Call",
+      "definition": "After-hours on-call availability"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 3
+}

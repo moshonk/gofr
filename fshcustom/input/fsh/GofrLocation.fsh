@@ -139,6 +139,71 @@ Description:    "GOFR Profile of Locations to manage facilities."
 * partOf 0..1 MS
 * partOf only Reference(GofrJurisdiction)
 * partOf ^label = "Parent"
+* operationalStatus 0..1 MS
+* operationalStatus ^label = "Operational Status"
+* operationalStatus from CamDHEAOperationalStatusValueSet (extensible)
+* extension contains
+    CamDHEAFacilityLevel named facilityLevel 0..1 MS and
+    CamDHEAOwnershipType named ownershipType 0..1 MS and
+    CamDHEACoordinateAccuracy named coordinateAccuracy 0..1 MS and
+    CamDHEAGoogleMapsLink named googleMapsLink 0..1 MS and
+    CamDHEAFacilityHead named facilityHead 0..1 MS and
+    CamDHEAClosureReason named closureReason 0..1 MS and
+    CamDHEASuccessorHfid named successorHfid 0..1 MS and
+    CamDHEALicenceStatus named licenceStatus 0..1 MS and
+    CamDHEALicensingAuthority named licensingAuthority 0..1 MS and
+    CamDHEAOperationalPeriod named operationalPeriod 0..1 MS and
+    CamDHEALicenceDates named licenceDates 0..1 MS and
+    CamDHEAAdministrativeLocation named administrativeLocation 0..1 MS and
+    CamDHEAEmergencyEquipment named emergencyEquipment 0..* MS and
+    CamDHEAWorkforceSummary named workforceSummary 0..* MS and
+    CamDHEACatchmentVillage named catchmentVillage 0..* MS and
+    CamDHEACatchmentPopulation named catchmentPopulation 0..1 MS and
+    CamDHEAFacilityTypeAcronym named facilityTypeAcronym 0..1 MS and
+    CamDHEAManagingEntityNameUse named managingEntityNameUse 0..1 MS and
+    CamDHEAManagingEntityNameScript named managingEntityNameScript 0..1 MS and
+    CamDHEAManagingEntityName named managingEntityName 0..1 MS
+* extension[facilityLevel] ^label = "Facility Level"
+* extension[facilityLevel].valueCodeableConcept MS
+* extension[ownershipType] ^label = "Ownership Type"
+* extension[ownershipType].valueCodeableConcept MS
+* extension[coordinateAccuracy] ^label = "Coordinate Accuracy"
+* extension[coordinateAccuracy].valueCode MS
+* extension[googleMapsLink] ^label = "Google Maps Link"
+* extension[googleMapsLink].valueUrl MS
+* extension[facilityHead] ^label = "Facility Head HWID"
+* extension[facilityHead].valueString MS
+* extension[closureReason] ^label = "Closure Reason"
+* extension[closureReason].valueCode MS
+* extension[successorHfid] ^label = "Successor Facility"
+* extension[successorHfid].valueReference MS
+* extension[licenceStatus] ^label = "Licence Status"
+* extension[licenceStatus].valueCode MS
+* extension[licensingAuthority] ^label = "Licensing Authority"
+* extension[licensingAuthority].valueCode MS
+* extension[operationalPeriod] ^label = "Operational Period"
+* extension[operationalPeriod].valuePeriod MS
+* extension[licenceDates] ^label = "Licence Dates"
+* extension[administrativeLocation] ^label = "Administrative Location"
+* extension[emergencyEquipment] ^label = "Emergency Equipment"
+* extension[workforceSummary] ^label = "Workforce Summary"
+* extension[catchmentVillage] ^label = "Catchment Village"
+* extension[catchmentPopulation] ^label = "Catchment Population"
+* extension[facilityTypeAcronym] ^label = "Facility Type Acronym"
+* extension[facilityTypeAcronym].valueString MS
+* extension[managingEntityNameUse] ^label = "Managing Entity Name Use"
+* extension[managingEntityNameUse].valueString MS
+* extension[managingEntityNameScript] ^label = "Managing Entity Name Script"
+* extension[managingEntityNameScript].valueCodeableConcept MS
+* extension[managingEntityName] ^label = "Managing Entity Name"
+* extension[managingEntityName].valueString MS
+* hoursOfOperation.extension contains
+    CamDHEAScheduleType named scheduleType 0..1 MS and
+    CamDHEAScheduleNotes named scheduleNotes 0..1 MS
+* hoursOfOperation.extension[scheduleType] ^label = "Schedule Type"
+* hoursOfOperation.extension[scheduleType].valueCode MS
+* hoursOfOperation.extension[scheduleNotes] ^label = "Schedule Notes"
+* hoursOfOperation.extension[scheduleNotes].valueString MS
 
 Extension:      RequestAffectedResource
 Id:             request-affected-resource
@@ -270,9 +335,17 @@ Usage:          #example
 * extension[display].extension[search][4].valueString = "Status|status"
 * extension[display].extension[search][5].valueString = "Longitute|position.longitude"
 * extension[display].extension[search][6].valueString = "Latitude|position.latitude"
+* extension[display].extension[search][7].valueString = "Facility Level|extension.where(url='http://camdhea.gov.kh/fhir/StructureDefinition/facility-level').valueCodeableConcept.coding.display"
+* extension[display].extension[search][8].valueString = "Ownership|extension.where(url='http://camdhea.gov.kh/fhir/StructureDefinition/ownership-type').valueCodeableConcept.coding.display"
+* extension[display].extension[search][9].valueString = "Province|extension.where(url='http://camdhea.gov.kh/fhir/StructureDefinition/administrative-location').extension.where(url='province').valueString"
+* extension[display].extension[search][10].valueString = "Operational Status|operationalStatus.display"
 * extension[display].extension[filter][0].valueString = "Name|name:contains"
-* extension[display].extension[filter][1].valueString = "Type|type|http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+* extension[display].extension[filter][1].valueString = "Type|type|http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-type"
 * extension[display].extension[filter][2].valueString = "Physical Type|physicalType|http://hl7.org/fhir/ValueSet/location-physical-type"
+* extension[display].extension[filter][3].valueString = "Facility Level|facilitylevel|http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-level"
+* extension[display].extension[filter][4].valueString = "Ownership|ownershiptype|http://camdhea.gov.kh/fhir/ValueSet/camdhea-ownership-type"
+* extension[display].extension[filter][5].valueString = "Operational Status|operationalstatus|http://camdhea.gov.kh/fhir/ValueSet/camdhea-operational-status"
+* extension[display].extension[filter][6].valueString = "Licence Status|licencestatus|http://camdhea.gov.kh/fhir/ValueSet/camdhea-licence-status"
 * extension[display].extension[field][0].extension[path].valueString = "position.longitude"
 * extension[display].extension[field][1].extension[path].valueString = "position.latitude"
 * extension[display].extension[field][2].extension[readOnlyIfSet].valueBoolean = true
@@ -288,44 +361,82 @@ Usage:          #example
 * extension[section][0].extension[field][5].valueString = "Location.partOf"
 * extension[section][0].extension[field][6].valueString = "Location.description"
 * extension[section][0].extension[field][7].valueString = "Location.physicalType"
-* extension[section][1].extension[title].valueString = "Geo-Coordinates"
-* extension[section][1].extension[description].valueString = "Facility Geo-Coordinates"
-* extension[section][1].extension[name].valueString = "Geo-Coordinates"
-* extension[section][1].extension[field][0].valueString = "Location.position"
-* extension[section][2].extension[title].valueString = "Identifiers"
-* extension[section][2].extension[description].valueString = "Facility Identifiers"
-* extension[section][2].extension[name].valueString = "Identifiers"
-* extension[section][2].extension[field][0].valueString = "Location.identifier"
-* extension[section][3].extension[title].valueString = "Contact Details"
-* extension[section][3].extension[description].valueString = "Address, email, phone numbers"
-* extension[section][3].extension[name].valueString = "contact"
-* extension[section][3].extension[field][0].valueString = "Location.telecom"
-* extension[section][4].extension[title].valueString = "Address"
-* extension[section][4].extension[description].valueString = "Facility Address"
-* extension[section][4].extension[name].valueString = "Address"
-* extension[section][4].extension[field][0].valueString = "Location.address"
-* extension[section][5].extension[title].valueString = "Hours of operation"
-* extension[section][5].extension[description].valueString = "Business hours"
-* extension[section][5].extension[name].valueString = "hoursOfOperation"
-* extension[section][5].extension[field][0].valueString = "Location.hoursOfOperation"
+* extension[section][1].extension[title].valueString = "Classification"
+* extension[section][1].extension[description].valueString = "Facility Classification"
+* extension[section][1].extension[name].valueString = "Classification"
+* extension[section][1].extension[field][0].valueString = "Location.extension:facilityLevel"
+* extension[section][1].extension[field][1].valueString = "Location.extension:ownershipType"
+* extension[section][1].extension[field][2].valueString = "Location.operationalStatus"
+* extension[section][2].extension[title].valueString = "Geo-Coordinates"
+* extension[section][2].extension[description].valueString = "Facility Geo-Coordinates"
+* extension[section][2].extension[name].valueString = "Geo-Coordinates"
+* extension[section][2].extension[field][0].valueString = "Location.position"
+* extension[section][2].extension[field][1].valueString = "Location.extension:coordinateAccuracy"
+* extension[section][2].extension[field][2].valueString = "Location.extension:googleMapsLink"
+* extension[section][3].extension[title].valueString = "Identifiers"
+* extension[section][3].extension[description].valueString = "Facility Identifiers"
+* extension[section][3].extension[name].valueString = "Identifiers"
+* extension[section][3].extension[field][0].valueString = "Location.identifier"
+* extension[section][4].extension[title].valueString = "Contact Details"
+* extension[section][4].extension[description].valueString = "Address, email, phone numbers"
+* extension[section][4].extension[name].valueString = "contact"
+* extension[section][4].extension[field][0].valueString = "Location.telecom"
+* extension[section][5].extension[title].valueString = "Address"
+* extension[section][5].extension[description].valueString = "Facility Address"
+* extension[section][5].extension[name].valueString = "Address"
+* extension[section][5].extension[field][0].valueString = "Location.address"
+* extension[section][6].extension[title].valueString = "Hours of operation"
+* extension[section][6].extension[description].valueString = "Business hours"
+* extension[section][6].extension[name].valueString = "hoursOfOperation"
+* extension[section][6].extension[field][0].valueString = "Location.hoursOfOperation"
+* extension[section][7].extension[title].valueString = "Administrative Location"
+* extension[section][7].extension[description].valueString = "Administrative Location Codes"
+* extension[section][7].extension[name].valueString = "Administrative Location"
+* extension[section][7].extension[field][0].valueString = "Location.extension:administrativeLocation"
+* extension[section][8].extension[title].valueString = "Administrative Details"
+* extension[section][8].extension[description].valueString = "Facility Head, Operational Period, Closure"
+* extension[section][8].extension[name].valueString = "Administrative Details"
+* extension[section][8].extension[field][0].valueString = "Location.extension:facilityHead"
+* extension[section][8].extension[field][1].valueString = "Location.extension:operationalPeriod"
+* extension[section][8].extension[field][2].valueString = "Location.extension:closureReason"
+* extension[section][8].extension[field][3].valueString = "Location.extension:successorHfid"
+* extension[section][9].extension[title].valueString = "Licensing"
+* extension[section][9].extension[description].valueString = "Licence Status and Details"
+* extension[section][9].extension[name].valueString = "Licensing"
+* extension[section][9].extension[field][0].valueString = "Location.extension:licenceStatus"
+* extension[section][9].extension[field][1].valueString = "Location.extension:licensingAuthority"
+* extension[section][9].extension[field][2].valueString = "Location.extension:licenceDates"
+* extension[section][10].extension[title].valueString = "Emergency Equipment"
+* extension[section][10].extension[description].valueString = "Emergency Equipment Inventory"
+* extension[section][10].extension[name].valueString = "Emergency Equipment"
+* extension[section][10].extension[field][0].valueString = "Location.extension:emergencyEquipment"
+* extension[section][11].extension[title].valueString = "Workforce Summary"
+* extension[section][11].extension[description].valueString = "Workforce Summary (Read-Only)"
+* extension[section][11].extension[name].valueString = "Workforce Summary"
+* extension[section][11].extension[field][0].valueString = "Location.extension:workforceSummary"
+* extension[section][12].extension[title].valueString = "Catchment"
+* extension[section][12].extension[description].valueString = "Catchment Villages and Population"
+* extension[section][12].extension[name].valueString = "Catchment"
+* extension[section][12].extension[field][0].valueString = "Location.extension:catchmentVillage"
+* extension[section][12].extension[field][1].valueString = "Location.extension:catchmentPopulation"
 
-* extension[section][6].extension[title].valueString = "Managing Organization"
-* extension[section][6].extension[description].valueString = "Organizations Managing This Facility"
-* extension[section][6].extension[name].valueString = "Managing Organization"
-* extension[section][6].extension[resource].extension[resource].valueReference = Reference(StructureDefinition/gofr-mcsd-organization)
-* extension[section][6].extension[resource].extension[searchfield].valueString = "Location:organization"
-* extension[section][6].extension[resource].extension[linkfield].valueString = "Organization.id"
-* extension[section][6].extension[resource].extension[column][0].extension[header].valueString = "Organization"
-* extension[section][6].extension[resource].extension[column][0].extension[field].valueString = "extension.where(url='http://gofr.org/fhir/StructureDefinition/GOFR.IHE.mCSD.OrganizationHierarchy').extension.where(url='part-of').valueReference"
-* extension[section][6].extension[resource].extension[column][1].extension[header].valueString = "Organization Type"
-* extension[section][6].extension[resource].extension[column][1].extension[field].valueString = "extension.where(url='http://gofr.org/fhir/StructureDefinition/GOFR.IHE.mCSD.OrganizationHierarchy').extension.where(url='hierarchy-type').valueCodeableConcept.coding"
-* extension[section][6].extension[resource].extension[column][2].extension[header].valueString = "Actions"
-* extension[section][6].extension[resource].extension[column][2].extension[field].valueString = "_action"
-* extension[section][6].extension[resource].extension[action][0].extension[link].valueString = "/resource/view/facilityorganization/ITEMID"
-* extension[section][6].extension[resource].extension[action][0].extension[text].valueString = "Edit"
-* extension[section][6].extension[resource].extension[action][0].extension[row].valueBoolean = true
-* extension[section][6].extension[resource].extension[action][0].extension[emptyDisplay].valueBoolean = false
-* extension[section][6].extension[resource].extension[action][0].extension[class].valueString = "secondary"
+* extension[section][13].extension[title].valueString = "Managing Organization"
+* extension[section][13].extension[description].valueString = "Organizations Managing This Facility"
+* extension[section][13].extension[name].valueString = "Managing Organization"
+* extension[section][13].extension[resource].extension[resource].valueReference = Reference(StructureDefinition/gofr-mcsd-organization)
+* extension[section][13].extension[resource].extension[searchfield].valueString = "Location:organization"
+* extension[section][13].extension[resource].extension[linkfield].valueString = "Organization.id"
+* extension[section][13].extension[resource].extension[column][0].extension[header].valueString = "Organization"
+* extension[section][13].extension[resource].extension[column][0].extension[field].valueString = "extension.where(url='http://gofr.org/fhir/StructureDefinition/GOFR.IHE.mCSD.OrganizationHierarchy').extension.where(url='part-of').valueReference"
+* extension[section][13].extension[resource].extension[column][1].extension[header].valueString = "Organization Type"
+* extension[section][13].extension[resource].extension[column][1].extension[field].valueString = "extension.where(url='http://gofr.org/fhir/StructureDefinition/GOFR.IHE.mCSD.OrganizationHierarchy').extension.where(url='hierarchy-type').valueCodeableConcept.coding"
+* extension[section][13].extension[resource].extension[column][2].extension[header].valueString = "Actions"
+* extension[section][13].extension[resource].extension[column][2].extension[field].valueString = "_action"
+* extension[section][13].extension[resource].extension[action][0].extension[link].valueString = "/resource/view/facilityorganization/ITEMID"
+* extension[section][13].extension[resource].extension[action][0].extension[text].valueString = "Edit"
+* extension[section][13].extension[resource].extension[action][0].extension[row].valueBoolean = true
+* extension[section][13].extension[resource].extension[action][0].extension[emptyDisplay].valueBoolean = false
+* extension[section][13].extension[resource].extension[action][0].extension[class].valueString = "secondary"
 
 Instance:       gofr-page-facility-add-request
 InstanceOf:     GofrPage
@@ -343,10 +454,14 @@ Usage:          #example
 * extension[display].extension[search][5].valueString = "Longitute|position.longitude"
 * extension[display].extension[search][6].valueString = "Latitude|position.latitude"
 * extension[display].extension[search][7].valueString = "Request Status|extension.where(url='http://gofr.org/fhir/StructureDefinition/request-status').valueCoding.display"
+* extension[display].extension[search][8].valueString = "Facility Level|extension.where(url='http://camdhea.gov.kh/fhir/StructureDefinition/facility-level').valueCodeableConcept.coding.display"
+* extension[display].extension[search][9].valueString = "Ownership|extension.where(url='http://camdhea.gov.kh/fhir/StructureDefinition/ownership-type').valueCodeableConcept.coding.display"
 * extension[display].extension[filter][0].valueString = "Name|name:contains"
-* extension[display].extension[filter][1].valueString = "Type|type|http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+* extension[display].extension[filter][1].valueString = "Type|type|http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-type"
 * extension[display].extension[filter][2].valueString = "Physical Type|physicalType|http://hl7.org/fhir/ValueSet/location-physical-type"
 * extension[display].extension[filter][3].valueString = "Request Status|requeststatus|request-status-valueset"
+* extension[display].extension[filter][4].valueString = "Facility Level|facilitylevel|http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-level"
+* extension[display].extension[filter][5].valueString = "Ownership|ownershiptype|http://camdhea.gov.kh/fhir/ValueSet/camdhea-ownership-type"
 * extension[display].extension[field][0].extension[path].valueString = "position.longitude"
 * extension[display].extension[field][1].extension[path].valueString = "position.latitude"
 * extension[display].extension[field][2].extension[readOnlyIfSet].valueBoolean = true
@@ -365,18 +480,36 @@ Usage:          #example
 * extension[section][0].extension[field][6].valueString = "Location.description"
 * extension[section][0].extension[field][7].valueString = "Location.physicalType"
 * extension[section][0].extension[field][8].valueString = "Location.extension:requestStatus"
-* extension[section][1].extension[title].valueString = "Geo-Coordinates"
-* extension[section][1].extension[description].valueString = "Facility Geo-Coordinates"
-* extension[section][1].extension[name].valueString = "Geo-Coordinates"
-* extension[section][1].extension[field][0].valueString = "Location.position"
-* extension[section][2].extension[title].valueString = "Identifiers"
-* extension[section][2].extension[description].valueString = "Facility Identifiers"
-* extension[section][2].extension[name].valueString = "Identifiers"
-* extension[section][2].extension[field][0].valueString = "Location.identifier"
-* extension[section][3].extension[title].valueString = "Address"
-* extension[section][3].extension[description].valueString = "Facility Address"
-* extension[section][3].extension[name].valueString = "Address"
-* extension[section][3].extension[field][0].valueString = "Location.address"
+* extension[section][1].extension[title].valueString = "Classification"
+* extension[section][1].extension[description].valueString = "Facility Classification"
+* extension[section][1].extension[name].valueString = "Classification"
+* extension[section][1].extension[field][0].valueString = "Location.extension:facilityLevel"
+* extension[section][1].extension[field][1].valueString = "Location.extension:ownershipType"
+* extension[section][1].extension[field][2].valueString = "Location.operationalStatus"
+* extension[section][2].extension[title].valueString = "Geo-Coordinates"
+* extension[section][2].extension[description].valueString = "Facility Geo-Coordinates"
+* extension[section][2].extension[name].valueString = "Geo-Coordinates"
+* extension[section][2].extension[field][0].valueString = "Location.position"
+* extension[section][2].extension[field][1].valueString = "Location.extension:coordinateAccuracy"
+* extension[section][2].extension[field][2].valueString = "Location.extension:googleMapsLink"
+* extension[section][3].extension[title].valueString = "Identifiers"
+* extension[section][3].extension[description].valueString = "Facility Identifiers"
+* extension[section][3].extension[name].valueString = "Identifiers"
+* extension[section][3].extension[field][0].valueString = "Location.identifier"
+* extension[section][4].extension[title].valueString = "Address"
+* extension[section][4].extension[description].valueString = "Facility Address"
+* extension[section][4].extension[name].valueString = "Address"
+* extension[section][4].extension[field][0].valueString = "Location.address"
+* extension[section][5].extension[title].valueString = "Administrative Location"
+* extension[section][5].extension[description].valueString = "Administrative Location Codes"
+* extension[section][5].extension[name].valueString = "Administrative Location"
+* extension[section][5].extension[field][0].valueString = "Location.extension:administrativeLocation"
+* extension[section][6].extension[title].valueString = "Licensing"
+* extension[section][6].extension[description].valueString = "Licence Status and Details"
+* extension[section][6].extension[name].valueString = "Licensing"
+* extension[section][6].extension[field][0].valueString = "Location.extension:licenceStatus"
+* extension[section][6].extension[field][1].valueString = "Location.extension:licensingAuthority"
+* extension[section][6].extension[field][2].valueString = "Location.extension:licenceDates"
 
 Instance:       gofr-page-facility-update-request
 InstanceOf:     GofrPage
@@ -393,10 +526,14 @@ Usage:          #example
 * extension[display].extension[search][5].valueString = "Longitute|position.longitude"
 * extension[display].extension[search][6].valueString = "Latitude|position.latitude"
 * extension[display].extension[search][7].valueString = "Request Status|extension.where(url='http://gofr.org/fhir/StructureDefinition/request-status').valueCoding.display"
+* extension[display].extension[search][8].valueString = "Facility Level|extension.where(url='http://camdhea.gov.kh/fhir/StructureDefinition/facility-level').valueCodeableConcept.coding.display"
+* extension[display].extension[search][9].valueString = "Ownership|extension.where(url='http://camdhea.gov.kh/fhir/StructureDefinition/ownership-type').valueCodeableConcept.coding.display"
 * extension[display].extension[filter][0].valueString = "Name|name:contains"
-* extension[display].extension[filter][1].valueString = "Type|type|http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+* extension[display].extension[filter][1].valueString = "Type|type|http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-type"
 * extension[display].extension[filter][2].valueString = "Physical Type|physicalType|http://hl7.org/fhir/ValueSet/location-physical-type"
 * extension[display].extension[filter][3].valueString = "Request Status|requeststatus|request-status-valueset"
+* extension[display].extension[filter][4].valueString = "Facility Level|facilitylevel|http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-level"
+* extension[display].extension[filter][5].valueString = "Ownership|ownershiptype|http://camdhea.gov.kh/fhir/ValueSet/camdhea-ownership-type"
 * extension[display].extension[field][0].extension[path].valueString = "position.longitude"
 * extension[display].extension[field][1].extension[path].valueString = "position.latitude"
 * extension[display].extension[field][2].extension[readOnlyIfSet].valueBoolean = true
@@ -415,18 +552,36 @@ Usage:          #example
 * extension[section][0].extension[field][6].valueString = "Location.description"
 * extension[section][0].extension[field][7].valueString = "Location.physicalType"
 * extension[section][0].extension[field][8].valueString = "Location.extension:requestStatus"
-* extension[section][1].extension[title].valueString = "Geo-Coordinates"
-* extension[section][1].extension[description].valueString = "Facility Geo-Coordinates"
-* extension[section][1].extension[name].valueString = "Geo-Coordinates"
-* extension[section][1].extension[field][0].valueString = "Location.position"
-* extension[section][2].extension[title].valueString = "Identifiers"
-* extension[section][2].extension[description].valueString = "Facility Identifiers"
-* extension[section][2].extension[name].valueString = "Identifiers"
-* extension[section][2].extension[field][0].valueString = "Location.identifier"
-* extension[section][3].extension[title].valueString = "Address"
-* extension[section][3].extension[description].valueString = "Facility Address"
-* extension[section][3].extension[name].valueString = "Address"
-* extension[section][3].extension[field][0].valueString = "Location.address"
+* extension[section][1].extension[title].valueString = "Classification"
+* extension[section][1].extension[description].valueString = "Facility Classification"
+* extension[section][1].extension[name].valueString = "Classification"
+* extension[section][1].extension[field][0].valueString = "Location.extension:facilityLevel"
+* extension[section][1].extension[field][1].valueString = "Location.extension:ownershipType"
+* extension[section][1].extension[field][2].valueString = "Location.operationalStatus"
+* extension[section][2].extension[title].valueString = "Geo-Coordinates"
+* extension[section][2].extension[description].valueString = "Facility Geo-Coordinates"
+* extension[section][2].extension[name].valueString = "Geo-Coordinates"
+* extension[section][2].extension[field][0].valueString = "Location.position"
+* extension[section][2].extension[field][1].valueString = "Location.extension:coordinateAccuracy"
+* extension[section][2].extension[field][2].valueString = "Location.extension:googleMapsLink"
+* extension[section][3].extension[title].valueString = "Identifiers"
+* extension[section][3].extension[description].valueString = "Facility Identifiers"
+* extension[section][3].extension[name].valueString = "Identifiers"
+* extension[section][3].extension[field][0].valueString = "Location.identifier"
+* extension[section][4].extension[title].valueString = "Address"
+* extension[section][4].extension[description].valueString = "Facility Address"
+* extension[section][4].extension[name].valueString = "Address"
+* extension[section][4].extension[field][0].valueString = "Location.address"
+* extension[section][5].extension[title].valueString = "Administrative Location"
+* extension[section][5].extension[description].valueString = "Administrative Location Codes"
+* extension[section][5].extension[name].valueString = "Administrative Location"
+* extension[section][5].extension[field][0].valueString = "Location.extension:administrativeLocation"
+* extension[section][6].extension[title].valueString = "Licensing"
+* extension[section][6].extension[description].valueString = "Licence Status and Details"
+* extension[section][6].extension[name].valueString = "Licensing"
+* extension[section][6].extension[field][0].valueString = "Location.extension:licenceStatus"
+* extension[section][6].extension[field][1].valueString = "Location.extension:licensingAuthority"
+* extension[section][6].extension[field][2].valueString = "Location.extension:licenceDates"
 
 Instance:       gofr-request-status
 InstanceOf:     SearchParameter
@@ -441,6 +596,66 @@ Usage:          #definition
 * base[0] = #Location
 * type = #token
 * expression = "Location.extension('http://gofr.org/fhir/StructureDefinition/request-status').valueCoding"
+* target[0] = #Location
+
+Instance:       gofr-search-facility-level
+InstanceOf:     SearchParameter
+Title:          "Search by facility level"
+Usage:          #definition
+* url = "http://gofr.org/fhir/SearchParameter/gofr-search-facility-level"
+* name = "Search by facility level"
+* description = "Search by facility level"
+* status = #active
+* experimental = false
+* code = #facilitylevel
+* base[0] = #Location
+* type = #token
+* expression = "Location.extension('http://camdhea.gov.kh/fhir/StructureDefinition/facility-level').valueCodeableConcept"
+* target[0] = #Location
+
+Instance:       gofr-search-ownership-type
+InstanceOf:     SearchParameter
+Title:          "Search by ownership type"
+Usage:          #definition
+* url = "http://gofr.org/fhir/SearchParameter/gofr-search-ownership-type"
+* name = "Search by ownership type"
+* description = "Search by ownership type"
+* status = #active
+* experimental = false
+* code = #ownershiptype
+* base[0] = #Location
+* type = #token
+* expression = "Location.extension('http://camdhea.gov.kh/fhir/StructureDefinition/ownership-type').valueCodeableConcept"
+* target[0] = #Location
+
+Instance:       gofr-search-operational-status
+InstanceOf:     SearchParameter
+Title:          "Search by operational status"
+Usage:          #definition
+* url = "http://gofr.org/fhir/SearchParameter/gofr-search-operational-status"
+* name = "Search by operational status"
+* description = "Search by operational status"
+* status = #active
+* experimental = false
+* code = #operationalstatus
+* base[0] = #Location
+* type = #token
+* expression = "Location.operationalStatus"
+* target[0] = #Location
+
+Instance:       gofr-search-licence-status
+InstanceOf:     SearchParameter
+Title:          "Search by licence status"
+Usage:          #definition
+* url = "http://gofr.org/fhir/SearchParameter/gofr-search-licence-status"
+* name = "Search by licence status"
+* description = "Search by licence status"
+* status = #active
+* experimental = false
+* code = #licencestatus
+* base[0] = #Location
+* type = #token
+* expression = "Location.extension('http://camdhea.gov.kh/fhir/StructureDefinition/licence-status').valueCode"
 * target[0] = #Location
 
 Instance:       gofr-page-jurisdiction

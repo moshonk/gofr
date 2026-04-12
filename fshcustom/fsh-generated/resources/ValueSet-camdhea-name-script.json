@@ -1,0 +1,17 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "CamDHEANameScriptValueSet",
+  "id": "camdhea-name-script",
+  "title": "CamDHEA Name Script ValueSet",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/ValueSet/camdhea-name-script",
+  "date": "2026-04-11",
+  "compose": {
+    "include": [
+      {
+        "system": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-name-script"
+      }
+    ]
+  }
+}

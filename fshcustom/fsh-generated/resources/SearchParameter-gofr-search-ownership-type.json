@@ -1,0 +1,18 @@
+{
+  "resourceType": "SearchParameter",
+  "id": "gofr-search-ownership-type",
+  "url": "http://gofr.org/fhir/SearchParameter/gofr-search-ownership-type",
+  "name": "Search by ownership type",
+  "description": "Search by ownership type",
+  "status": "active",
+  "experimental": false,
+  "code": "ownershiptype",
+  "base": [
+    "Location"
+  ],
+  "type": "token",
+  "expression": "Location.extension('http://camdhea.gov.kh/fhir/StructureDefinition/ownership-type').valueCodeableConcept",
+  "target": [
+    "Location"
+  ]
+}

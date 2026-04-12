@@ -1,0 +1,45 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEAClosureReasonCodeSystem",
+  "id": "camdhea-closure-reason",
+  "title": "CamDHEA Closure Reason",
+  "description": "Reason the facility ceased operations.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-closure-reason",
+  "concept": [
+    {
+      "code": "MergedWithAnotherFacility",
+      "display": "Merged with Another Facility",
+      "definition": "Merged with Another Facility"
+    },
+    {
+      "code": "PermanentlyClosed",
+      "display": "Permanently Closed",
+      "definition": "Permanently Closed"
+    },
+    {
+      "code": "LicenceRevoked",
+      "display": "Licence Revoked",
+      "definition": "Licence Revoked"
+    },
+    {
+      "code": "NaturalDisaster",
+      "display": "Natural Disaster",
+      "definition": "Natural Disaster"
+    },
+    {
+      "code": "FundingCeased",
+      "display": "Funding Ceased",
+      "definition": "Funding Ceased"
+    },
+    {
+      "code": "Other",
+      "display": "Other",
+      "definition": "Other"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 6
+}
