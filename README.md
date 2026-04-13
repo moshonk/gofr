@@ -26,7 +26,7 @@ If you have ZenHub installed, you may view the [2021 roadmap](https://github.com
 - Search through or create an [issue](https://github.com/intrahealth/gofr/issues).
 
 ## Copilot Customizations
-- Workspace Copilot customizations are documented in [.github/CUSTOMIZATIONS.md](../.github/CUSTOMIZATIONS.md).
+- Workspace Copilot customizations are documented in [.github/CUSTOMIZATIONS.md](.github/CUSTOMIZATIONS.md).
 - Prompt files can be run as slash commands in chat.
 - Custom agents (`GOFR Review`, `GOFR Docs Review`) are available in the agent picker.
 
