@@ -632,7 +632,7 @@
         {
           "linkId": "Organization.name",
           "definition": "http://gofr.org/fhir/StructureDefinition/GOFR.IHE.mCSD.FacilityOrganization#Organization.name",
-          "text": "Oranization Names",
+          "text": "Organization Names",
           "type": "string",
           "repeats": false,
           "required": true,
