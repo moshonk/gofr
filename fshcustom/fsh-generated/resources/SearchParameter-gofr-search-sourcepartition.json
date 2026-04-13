@@ -3,7 +3,7 @@
   "id": "gofr-search-sourcepartition",
   "url": "http://gofr.org/fhir/SearchParameter/gofr-search-sourcepartition",
   "description": "search parameter for data source partition of the sourcepartition profile",
-  "name": "search parameter for data source partition of the data source profile",
+  "name": "gofr-search-sourcepartition",
   "status": "active",
   "experimental": false,
   "code": "datasourcepartition",
