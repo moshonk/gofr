@@ -50,7 +50,7 @@
         },
         {
           "url": "search",
-          "valueString": "Longitute|position.longitude"
+          "valueString": "Longitude|position.longitude"
         },
         {
           "url": "search",
@@ -74,23 +74,23 @@
         },
         {
           "url": "filter",
-          "valueString": "Type|type|http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-type"
+          "valueString": "Type|type|type|http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-type"
         },
         {
           "url": "filter",
-          "valueString": "Physical Type|physicalType|http://hl7.org/fhir/ValueSet/location-physical-type"
+          "valueString": "Physical Type|physicalType|physicalType|http://hl7.org/fhir/ValueSet/location-physical-type"
         },
         {
           "url": "filter",
-          "valueString": "Request Status|requeststatus|request-status-valueset"
+          "valueString": "Request Status|requeststatus|requeststatus|request-status-valueset"
         },
         {
           "url": "filter",
-          "valueString": "Facility Level|facilitylevel|http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-level"
+          "valueString": "Facility Level|facilitylevel|facilitylevel|http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-level"
         },
         {
           "url": "filter",
-          "valueString": "Ownership|ownershiptype|http://camdhea.gov.kh/fhir/ValueSet/camdhea-ownership-type"
+          "valueString": "Ownership|ownershiptype|ownershiptype|http://camdhea.gov.kh/fhir/ValueSet/camdhea-ownership-type"
         },
         {
           "extension": [

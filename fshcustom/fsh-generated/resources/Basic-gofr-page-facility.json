@@ -98,7 +98,24 @@
         },
         {
           "url": "filter",
-          "valueString": "Licence Status|licencestatus|http://camdhea.gov.kh/fhir/ValueSet/camdhea-licence-status"
+          "valueString": "Licence Status|licencestatus||http://camdhea.gov.kh/fhir/ValueSet/camdhea-licence-status"
+        },
+        {
+          "extension": [
+            {
+              "url": "url",
+              "valueUrl": "/questionnaire/gofr-facility-questionnaire/facility"
+            },
+            {
+              "url": "icon",
+              "valueString": "mdi-hospital-building"
+            },
+            {
+              "url": "class",
+              "valueString": "primary"
+            }
+          ],
+          "url": "add"
         },
         {
           "extension": [

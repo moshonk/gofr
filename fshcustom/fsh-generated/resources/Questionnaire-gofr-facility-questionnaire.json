@@ -53,8 +53,8 @@
               "answerOption": [
                 {
                   "valueCoding": {
-                    "system": "http://hl7.org/fhir/identifier-use",
-                    "code": "official"
+                    "code": "official",
+                    "system": "http://hl7.org/fhir/identifier-use"
                   },
                   "initialSelected": true
                 }
@@ -682,7 +682,7 @@
         {
           "linkId": "Organization.name",
           "definition": "http://gofr.org/fhir/StructureDefinition/GOFR.IHE.mCSD.FacilityOrganization#Organization.name",
-          "text": "Organization Names",
+          "text": "Oranization Names",
           "type": "string",
           "repeats": false,
           "required": true,

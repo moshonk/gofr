@@ -56,7 +56,7 @@
         },
         {
           "url": "search",
-          "valueString": "Longitute|position.longitude"
+          "valueString": "Longitude|position.longitude"
         },
         {
           "url": "search",
