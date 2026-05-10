@@ -23,10 +23,10 @@
         {
           "linkId": "Location.identifier[0]",
           "definition": "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier",
-          "text": "Identifier",
+          "text": "HFID (Health Facility ID)",
           "type": "group",
-          "repeats": true,
-          "required": false,
+          "repeats": false,
+          "required": true,
           "item": [
             {
               "linkId": "Location.identifier[0].system",
@@ -34,10 +34,60 @@
               "text": "System",
               "type": "string",
               "repeats": false,
-              "required": false
+              "required": true,
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "https://camdhea.gov.kh/ns/hfid"
+                }
+              ]
+            },
+            {
+              "linkId": "Location.identifier[0].use",
+              "definition": "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.use",
+              "text": "Use",
+              "type": "choice",
+              "repeats": false,
+              "required": true,
+              "readOnly": true,
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/identifier-use",
+                    "code": "official"
+                  },
+                  "initialSelected": true
+                }
+              ]
             },
             {
               "linkId": "Location.identifier[0].value",
+              "definition": "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.value",
+              "text": "HFID",
+              "type": "string",
+              "repeats": false,
+              "required": true
+            }
+          ]
+        },
+        {
+          "linkId": "Location.identifier[1]",
+          "definition": "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier",
+          "text": "Identifier",
+          "type": "group",
+          "repeats": true,
+          "required": false,
+          "item": [
+            {
+              "linkId": "Location.identifier[1].system",
+              "definition": "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.system",
+              "text": "System",
+              "type": "string",
+              "repeats": false,
+              "required": false
+            },
+            {
+              "linkId": "Location.identifier[1].value",
               "definition": "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.value",
               "text": "ID Number",
               "type": "string",
@@ -45,7 +95,7 @@
               "required": false
             },
             {
-              "linkId": "Location.identifier[0].type",
+              "linkId": "Location.identifier[1].type",
               "definition": "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.type",
               "text": "ID Type",
               "type": "choice",

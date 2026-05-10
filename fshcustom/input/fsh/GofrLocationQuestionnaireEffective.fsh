@@ -24,34 +24,69 @@ Usage:          #definition
 * item[0].text = "Identifiers|Identifiers for the facility"
 * item[0].type = #group
 
+// HFID — dedicated, pre-filled system/use, non-repeatable
 * item[0].item[0].linkId = "Location.identifier[0]"
 * item[0].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier"
-* item[0].item[0].text = "Identifier"
+* item[0].item[0].text = "HFID (Health Facility ID)"
 * item[0].item[0].type = #group
-* item[0].item[0].repeats = true
-* item[0].item[0].required = false
+* item[0].item[0].repeats = false
+* item[0].item[0].required = true
 
 * item[0].item[0].item[0].linkId = "Location.identifier[0].system"
 * item[0].item[0].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.system"
 * item[0].item[0].item[0].text = "System"
 * item[0].item[0].item[0].type = #string
 * item[0].item[0].item[0].repeats = false
-* item[0].item[0].item[0].required = false
+* item[0].item[0].item[0].required = true
+* item[0].item[0].item[0].readOnly = true
+* item[0].item[0].item[0].initial.valueString = "https://camdhea.gov.kh/ns/hfid"
 
-* item[0].item[0].item[1].linkId = "Location.identifier[0].value"
-* item[0].item[0].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.value"
-* item[0].item[0].item[1].text = "ID Number"
-* item[0].item[0].item[1].type = #string
+* item[0].item[0].item[1].linkId = "Location.identifier[0].use"
+* item[0].item[0].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.use"
+* item[0].item[0].item[1].text = "Use"
+* item[0].item[0].item[1].type = #choice
 * item[0].item[0].item[1].repeats = false
-* item[0].item[0].item[1].required = false
+* item[0].item[0].item[1].required = true
+* item[0].item[0].item[1].readOnly = true
+* item[0].item[0].item[1].answerOption[0].valueCoding = http://hl7.org/fhir/identifier-use#official
+* item[0].item[0].item[1].answerOption[0].initialSelected = true
 
-* item[0].item[0].item[2].linkId = "Location.identifier[0].type"
-* item[0].item[0].item[2].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.type"
-* item[0].item[0].item[2].text = "ID Type"
-* item[0].item[0].item[2].type = #choice
-* item[0].item[0].item[2].answerValueSet = "http://hl7.org/fhir/ValueSet/identifier-type"
+* item[0].item[0].item[2].linkId = "Location.identifier[0].value"
+* item[0].item[0].item[2].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.value"
+* item[0].item[0].item[2].text = "HFID"
+* item[0].item[0].item[2].type = #string
 * item[0].item[0].item[2].repeats = false
-* item[0].item[0].item[2].required = false
+* item[0].item[0].item[2].required = true
+
+// Other Identifiers — generic, repeatable
+* item[0].item[1].linkId = "Location.identifier[1]"
+* item[0].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier"
+* item[0].item[1].text = "Identifier"
+* item[0].item[1].type = #group
+* item[0].item[1].repeats = true
+* item[0].item[1].required = false
+
+* item[0].item[1].item[0].linkId = "Location.identifier[1].system"
+* item[0].item[1].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.system"
+* item[0].item[1].item[0].text = "System"
+* item[0].item[1].item[0].type = #string
+* item[0].item[1].item[0].repeats = false
+* item[0].item[1].item[0].required = false
+
+* item[0].item[1].item[1].linkId = "Location.identifier[1].value"
+* item[0].item[1].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.value"
+* item[0].item[1].item[1].text = "ID Number"
+* item[0].item[1].item[1].type = #string
+* item[0].item[1].item[1].repeats = false
+* item[0].item[1].item[1].required = false
+
+* item[0].item[1].item[2].linkId = "Location.identifier[1].type"
+* item[0].item[1].item[2].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier.type"
+* item[0].item[1].item[2].text = "ID Type"
+* item[0].item[1].item[2].type = #choice
+* item[0].item[1].item[2].answerValueSet = "http://hl7.org/fhir/ValueSet/identifier-type"
+* item[0].item[1].item[2].repeats = false
+* item[0].item[1].item[2].required = false
 
 // =========================================================================
 // item[1] — Facility Name

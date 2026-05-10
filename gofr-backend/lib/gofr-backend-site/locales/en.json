@@ -151,6 +151,7 @@
       "Usage": "Usage",
       "Family": "Family",
       "Given": "Given",
+      "Jurisdiction": "Jurisdiction",
       "Jurisdictions": "Jurisdictions",
       "Details": "Details",
       "Jurisdiction details": "Jurisdiction details",
@@ -230,6 +231,7 @@
       "Facility classification details": "Facility classification details",
       "Facility Type Acronym": "Facility Type Acronym",
       "Facility Level": "Facility Level",
+      "Ownership": "Ownership",
       "Ownership Type": "Ownership Type",
       "Managing Entity Name Use": "Managing Entity Name Use",
       "Managing Entity Name Script": "Managing Entity Name Script",
@@ -254,7 +256,13 @@
       "Computation Method": "Computation Method",
       "Facility name and basic identity": "Facility name and basic identity",
       "GOFR Facility Questionnaire": "GOFR Facility Questionnaire",
-      "GOFR Organization Questionnaire": "GOFR Organization Questionnaire"
+      "GOFR Organization Questionnaire": "GOFR Organization Questionnaire",
+      "GOFR Facility": "GOFR Facility",
+      "GOFR Organization": "GOFR Organization",
+      "GOFR Facility Service": "GOFR Facility Service",
+      "GOFR Jurisdiction": "GOFR Jurisdiction",
+      "HFID": "HFID",
+      "HFID (Health Facility ID)": "HFID (Health Facility ID)"
     },
     "hardcoded-texts": {
       "1": "1",

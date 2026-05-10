@@ -822,7 +822,13 @@ router.get('/page/:page/:type?', (req, res) => {
         searchElement += '-code';
       }
 
-      let searchTemplate = `<${searchElement} :key="$route.params.page" page="${req.params.page}" label="${resource.title || resource.name}" :fields="fields" :terms="terms" resource="${resource.resourceType === 'StructureDefinition' ? resource.type : resource.resourceType}" profile="${resource.url}" :search-action="searchAction" :request-action='requestAction'`;
+      // Use the baseDefinition profile for searching when data is stored with the mCSD/parent profile
+      // (HAPI FHIR matches meta.profile exactly and doesn't resolve profile inheritance)
+      const searchProfile = (resource.baseDefinition && !resource.baseDefinition.startsWith('http://hl7.org/fhir/StructureDefinition/'))
+        ? resource.baseDefinition
+        : resource.url;
+
+      let searchTemplate = `<${searchElement} :key="$route.params.page" page="${req.params.page}" label="${resource.title || resource.name}" :fields="fields" :terms="terms" resource="${resource.resourceType === 'StructureDefinition' ? resource.type : resource.resourceType}" profile="${searchProfile}" :search-action="searchAction" :request-action='requestAction'`;
       if (pageUpdatingResource) {
         pageUpdatingResource = resource.url.replace(pageResource, '') + pageUpdatingResource;
         searchTemplate += `request-updating-resource=${pageUpdatingResource}`;
