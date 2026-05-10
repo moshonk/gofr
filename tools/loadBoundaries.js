@@ -11,9 +11,9 @@
  *
  * Example:
  *   node loadBoundaries.js \
- *     --geojson ./khm_admbnda_adm2_gov_20181004.json \
- *     --nameProperty ADM2_EN \
- *     --partition KampongChampjrymylm5mfb6skk5ese1m \
+ *     --geojson ./khm_admin2.geojson \
+ *     --nameProperty adm2_name \
+ *     --partition DEFAULT \
  *     --fhir http://localhost:8080/fhir
  *
  * GeoJSON sources (free):
@@ -40,9 +40,10 @@ function getArg(name) {
 }
 
 const geojsonPath  = getArg('geojson')   || null;
-const nameProperty = getArg('nameProperty') || 'NAME_1';
-const partition    = getArg('partition') || 'KampongChampjrymylm5mfb6skk5ese1m';
+const nameProperty = getArg('nameProperty') || 'adm2_name';
+const partition    = getArg('partition') || 'DEFAULT';
 const fhirBase     = getArg('fhir')      || 'http://localhost:8080/fhir';
+const typeCode     = getArg('typeCode')  || 'urn:ihe:iti:mcsd:2019:jurisdiction';
 const dryRun       = args.includes('--dry-run');
 
 if (!geojsonPath) {
@@ -125,7 +126,7 @@ async function main() {
 
   console.log(`\nFetching all jurisdiction Locations from HAPI partition "${partition}"...`);
   const jurisdictions = await fetchAll(
-    `${fhirBase}/${partition}/Location?type=urn:ihe:iti:mcsd:2019:jurisdiction&_count=200`
+    `${fhirBase}/${partition}/Location?type=${encodeURIComponent(typeCode)}&_count=200`
   );
   console.log(`  ${jurisdictions.length} jurisdiction Locations found`);
 
