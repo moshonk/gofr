@@ -12,7 +12,7 @@
     <v-list dense>
       <v-list-item v-for="(lang, index) in languages" :key="index" @click="handleMenuItemClick(lang)">
         <v-list-item-avatar size="24">
-          <v-img :src="`/flag_${lang.flag}.svg`"></v-img>
+          <v-img :src="`/flag_${getFlagCode(lang)}.svg`"></v-img>
         </v-list-item-avatar>
         <v-list-item-title>{{ lang.language }}</v-list-item-title>
       </v-list-item>
@@ -37,17 +37,32 @@ export default {
     this.getLanguageList()
   },
   methods: {
+    getFlagCode (lang) {
+      if (lang && lang.flag) {
+        return lang.flag
+      }
+      if (lang && lang.locale) {
+        return lang.locale.split(/[-_]/)[0].toLowerCase()
+      }
+      return 'en'
+    },
     handleMenuItemClick (lang) {
+      const flagCode = this.getFlagCode(lang)
       loadLanguage(lang.locale)
       localStorage.setItem('activeLang', lang.language)
-      localStorage.setItem('activeFlag', lang.flag)
+      localStorage.setItem('activeFlag', flagCode)
       localStorage.setItem('activeLocale', lang.locale)
       this.activeLang = lang.language;
-      this.activeFlag = lang.flag
+      this.activeFlag = flagCode
     },
     getLanguageList() {
       axios.get("/translator/getTranslatedLanguages").then((response) => {
-        this.languages = response.data
+        this.languages = response.data.map((lang) => {
+          return {
+            ...lang,
+            flag: this.getFlagCode(lang),
+          }
+        })
         this.languages.sort((a, b) => {
           if (a.language < b.language) {
             return -1;
@@ -61,8 +76,15 @@ export default {
         let activeLanguage = this.languages.find((lang) => {
           return lang.locale === activeLocale
         })
+        if (!activeLanguage && this.languages.length > 0) {
+          activeLanguage = this.languages.find((lang) => lang.locale === 'en') || this.languages[0]
+        }
+        if (!activeLanguage) {
+          return
+        }
         this.$i18n.locale = activeLanguage.locale
         this.activeLang = activeLanguage.language
+        this.activeFlag = this.getFlagCode(activeLanguage)
         loadLanguage(activeLanguage.locale || "en")
       })
     }

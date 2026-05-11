@@ -1,3 +1,4 @@
+const axios = require('axios');
 const deepmerge = require('deepmerge');
 const crypto = require('crypto');
 const express = require('express');
@@ -16,7 +17,15 @@ const getUKey = () => Math.random().toString(36).replace(/^[^a-z]+/, '') + Math.
 
 const getDefinition = (resource) => {
   const structureDef = resource.split('/');
-  return fhirAxios.read(structureDef[0], structureDef[1], '', 'DEFAULT');
+  return fhirAxios.read(structureDef[0], structureDef[1], '', 'DEFAULT').then((sd) => {
+    if (sd && !sd.hasOwnProperty('snapshot')) {
+      // Ask HAPI to generate the snapshot via the $snapshot operation
+      const baseUrl = fhirAxios.__genUrl('DEFAULT');
+      const snapshotUrl = `${baseUrl.replace(/\/$/, '')}/${structureDef[0]}/${structureDef[1]}/$snapshot`;
+      return axios.get(snapshotUrl).then(response => response.data);
+    }
+    return sd;
+  });
 };
 const profileResources = {};
 const getProfileResource = profile => new Promise((resolve, reject) => {
@@ -934,7 +943,9 @@ router.get('/page/:page/:type?', (req, res) => {
   }).catch((err) => {
     logger.error(err.message);
     logger.error(err.stack);
-    return res.status(err.response.status).json(err.response.data);
+    const status = err.response?.status || 500;
+    const data = err.response?.data || { error: err.message };
+    return res.status(status).json(data);
   });
 });
 

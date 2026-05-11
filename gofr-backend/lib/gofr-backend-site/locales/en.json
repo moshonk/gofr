@@ -130,7 +130,7 @@
       "Use": "Use",
       "Facility Type": "Facility Type",
       "Facility Physical Type": "Facility Physical Type",
-      "Longitute": "Longitute",
+      "Longitude": "Longitude",
       "GOFR Facility Add Request": "GOFR Facility Add Request",
       "Basic Details": "Basic Details",
       "Affected Resource": "Affected Resource",
@@ -199,6 +199,7 @@
       "Village Code": "Village Code",
       "Administrative": "Administrative",
       "Administrative details": "Administrative details",
+      "Administrative Details": "Administrative Details",
       "Facility Head HWID": "Facility Head HWID",
       "Establishment Date": "Establishment Date",
       "Closure Reason": "Closure Reason",
@@ -262,7 +263,12 @@
       "GOFR Facility Service": "GOFR Facility Service",
       "GOFR Jurisdiction": "GOFR Jurisdiction",
       "HFID": "HFID",
-      "HFID (Health Facility ID)": "HFID (Health Facility ID)"
+      "HFID (Health Facility ID)": "HFID (Health Facility ID)",
+      "true": "Yes",
+      "false": "No",
+      "Update Facility": "Update Facility",
+      "Request Adding Facility": "Request Adding Facility",
+      "undefined": ""
     },
     "hardcoded-texts": {
       "1": "1",
@@ -536,6 +542,7 @@
       "Only": "Only",
       "Source 1 Matched": "Source 1 Matched",
       "Source 1 NO MATCH": "Source 1 No Match",
+      "Source 1 No Match": "Source 1 No Match",
       "Source 1 Flagged": "Source 1 Flagged",
       "Source 2 Matched": "Source 2 Matched",
       "Source 2 Flagged": "Source 2 Flagged",
@@ -576,7 +583,9 @@
       "Enabled": "Enabled",
       "initApp": "Initializing App",
       "GOFR Version": "GOFR Version",
-      "OK": "Ok"
+      "OK": "Ok",
+      "Permissions for user": "Permissions for user",
+      "Select user to view permisions": "Select user to view permisions"
     },
     "title": "Manage",
     "site": "Demo"

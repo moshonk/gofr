@@ -6,8 +6,9 @@ const fhirDefinition = {
   _getFieldDefinition: (fieldId, structureDef) => new Promise((resolve, reject) => {
     // take [#] off of fieldId here
     fieldId = fieldId.replace(/\[\d+\]/g, '');
-    if (!structureDef || !structureDef.snapshot || !structureDef.snapshot.element) {
-      return reject(`StructureDefinition ${structureDef ? structureDef.id || structureDef.url : 'unknown'} has no snapshot`);
+    if (!structureDef.snapshot || !structureDef.snapshot.element) {
+      reject(`No snapshot for ${structureDef.url || structureDef.id}`);
+      return;
     }
     let field = structureDef.snapshot.element.find(element => element.id === fieldId);
     if (field) {
@@ -23,17 +24,11 @@ const fhirDefinition = {
         field = structureDef.snapshot.element.find(element => element.id === fieldSplit.join('.'));
         if (field) found = true;
       }
-      let subExpression;
-      if (!field.type || !field.type[0]) {
-        return resolve(field);
-      } else if (field.type[0].code === 'Extension' && field.type[0].profile && field.type[0].profile[0]) {
-        subExpression = `${field.type[0].profile[0]}#Extension.${remainder.join('.')}`;
-      } else if (field.type[0].code === 'Extension') {
-        // Extension without profile URL - cannot resolve further, return field as-is
-        return resolve(field);
-      } else {
-        subExpression = `http://hl7.org/fhir/StructureDefinition/${field.type[0].code}#${field.type[0].code}.${remainder.join('.')}`;
+      if (!field.type || !field.type[0] || !field.type[0].code) {
+        reject(`No type for field ${fieldSplit.join('.')} in ${structureDef.url || structureDef.id}`);
+        return;
       }
+      const subExpression = `http://hl7.org/fhir/StructureDefinition/${field.type[0].code}#${field.type[0].code}.${remainder.join('.')}`;
       fhirDefinition.getFieldDefinition(subExpression).then((field) => {
         resolve(field);
       }).catch((err) => {
@@ -54,22 +49,7 @@ const fhirDefinition = {
           reject(err);
         });
       }).catch((err) => {
-        // If direct read by ID fails, try searching by canonical URL
-        fhirAxios.search('StructureDefinition', { url: exp[0] }, 'DEFAULT').then((bundle) => {
-          if (bundle && bundle.entry && bundle.entry.length > 0) {
-            const resource = bundle.entry[0].resource;
-            cache[exp[0]] = resource;
-            fhirDefinition._getFieldDefinition(exp[1], cache[exp[0]]).then((field) => {
-              resolve(field);
-            }).catch((err2) => {
-              reject(err2);
-            });
-          } else {
-            reject(err);
-          }
-        }).catch((err2) => {
-          reject(err2);
-        });
+        reject(err);
       });
     } else {
       fhirDefinition._getFieldDefinition(exp[1], cache[exp[0]]).then((field) => {
