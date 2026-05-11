@@ -8,8 +8,9 @@
     height="50"
   >
     
-    <router-link to="/">
-      <img src="../assets/GOFR_RGB_high-res.png" width="220" style="margin-top: 11px"/>
+    <router-link to="/" class="brand-link">
+      <img src="../assets/GOFR_RGB_high-res.png" width="220" class="brand-logo"/>
+      <span class="brand-title">CAMBODIA MOH Facility Registry</span>
     </router-link>
     <template v-if="$store.state.auth.userID">
       <v-spacer></v-spacer>
@@ -60,3 +61,24 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-logo {
+  margin-top: 11px;
+}
+
+.brand-title {
+  margin-top: 11px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2f4f4f;
+  white-space: nowrap;
+}
+</style>

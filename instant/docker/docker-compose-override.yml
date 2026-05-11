@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  gofr:
+     volumes:
+      - ../../fshcustom/fsh-generated/resources:/src/fshcustom/fsh-generated/resources:ro
+      - ../../fshmcsd/fsh-generated/resources:/src/fshmcsd/fsh-generated/resources:ro
+      - ../../gofr-backend/lib/modules/fhirDefinition.js:/src/gofr-backend/lib/modules/fhirDefinition.js:ro
+
+volumes:
+  redis-data:
+  hapi-data:

@@ -10,7 +10,10 @@ Description:    "GOFR Profile of mCSD Organization to manage organizations."
 * type.coding from OrganizationType (required)
 * name 1..1 MS
 * name ^label = "Name"
-* extension contains GOFRMCSDOrganizationHierarchy named gofr-hierarchy 0..* MS
+* alias 0..* MS
+* alias ^label = "Alternate Name"
+* extension contains
+    GOFRMCSDOrganizationHierarchy named gofr-hierarchy 0..* MS
 * extension[gofr-hierarchy] MS
 * extension[gofr-hierarchy] ^label = "Attach To Hierarchy"
 * extension[gofr-hierarchy].extension[hierarchy-type].valueCodeableConcept MS

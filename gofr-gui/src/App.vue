@@ -164,6 +164,13 @@ export default {
       this.$store.state.errorColor = 'primary'
       this.$store.state.dialogError = false
     },
+    navigateToHome () {
+      const routeName = this.$store.state.auth.username === 'public@gofr.org' ? 'HomePublic' : 'Home'
+      if (this.$route && this.$route.name === routeName) {
+        return
+      }
+      this.$router.push({ name: routeName }).catch(() => {})
+    },
     renderInitialPage () {
       if(!this.$store.state.config.userConfig.FRDatasource) {
         if(this.$store.state.auth.username === "public@gofr.org") {
@@ -187,20 +194,12 @@ export default {
           this.$store.state.dataSourcePairs.length > 0)
       ) {
         this.$store.state.initializingApp = false
-        if(this.$store.state.auth.username === "public@gofr.org") {
-          this.$router.push({ name: 'HomePublic' })
-        } else {
-          this.$router.push({ name: 'Home' })
-        }
+        this.navigateToHome()
         return
       }
       if (!source1DB || !source2DB) {
         this.$store.state.initializingApp = false
-        if(this.$store.state.auth.username === "public@gofr.org") {
-          this.$router.push({ name: 'HomePublic' })
-        } else {
-          this.$router.push({ name: 'Home' })
-        }
+        this.navigateToHome()
         return
       }
       axios.get( '/uploadAvailable/' + source1DB + '/' + source2DB ).then(results => {
@@ -208,19 +207,11 @@ export default {
         if (results.data.dataUploaded) {
           this.$store.state.recalculateScores = true
         }
-        if(this.$store.state.auth.username === "public@gofr.org") {
-          this.$router.push({ name: 'HomePublic' })
-        } else {
-          this.$router.push({ name: 'Home' })
-        }
+        this.navigateToHome()
       })
       .catch(err => {
         console.log(err)
-        if(this.$store.state.auth.username === "public@gofr.org") {
-          this.$router.push({ name: 'HomePublic' })
-        } else {
-          this.$router.push({ name: 'Home' })
-        }
+        this.navigateToHome()
       })
     },
     getTotalLevels () {

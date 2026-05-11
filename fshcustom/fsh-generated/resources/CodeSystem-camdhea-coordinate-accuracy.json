@@ -1,0 +1,35 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEACoordinateAccuracyCodeSystem",
+  "id": "camdhea-coordinate-accuracy",
+  "title": "CamDHEA Coordinate Accuracy",
+  "description": "Method and confidence level of the GPS coordinates.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-coordinate-accuracy",
+  "concept": [
+    {
+      "code": "GPSDevice",
+      "display": "GPS Device",
+      "definition": "Captured using GPS device"
+    },
+    {
+      "code": "MappingTool",
+      "display": "Mapping Tool",
+      "definition": "Captured using validated mapping tool"
+    },
+    {
+      "code": "Estimated",
+      "display": "Estimated",
+      "definition": "Approximate coordinates — flag for field verification"
+    },
+    {
+      "code": "Unknown",
+      "display": "Unknown",
+      "definition": "Method unknown — flag for field verification"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 4
+}

@@ -1,0 +1,18 @@
+{
+  "resourceType": "SearchParameter",
+  "id": "gofr-search-licence-status",
+  "url": "http://gofr.org/fhir/SearchParameter/gofr-search-licence-status",
+  "name": "Search by licence status",
+  "description": "Search by licence status",
+  "status": "active",
+  "experimental": false,
+  "code": "licencestatus",
+  "base": [
+    "Location"
+  ],
+  "type": "token",
+  "expression": "Location.extension('http://camdhea.gov.kh/fhir/StructureDefinition/licence-status').valueCode",
+  "target": [
+    "Location"
+  ]
+}

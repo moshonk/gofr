@@ -1,0 +1,45 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEAFacilityLevelCodeSystem",
+  "id": "camdhea-facility-level",
+  "title": "CamDHEA Facility Level",
+  "description": "Service delivery level indicating the minimum package of activities.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-facility-level",
+  "concept": [
+    {
+      "code": "MPA",
+      "display": "Minimum Package of Activities",
+      "definition": "MPA"
+    },
+    {
+      "code": "CPA1",
+      "display": "Complementary Package of Activities Level 1",
+      "definition": "CPA1"
+    },
+    {
+      "code": "CPA2",
+      "display": "Complementary Package of Activities Level 2",
+      "definition": "CPA2"
+    },
+    {
+      "code": "CPA3",
+      "display": "Complementary Package of Activities Level 3",
+      "definition": "CPA3"
+    },
+    {
+      "code": "Specialized",
+      "display": "Specialized",
+      "definition": "Specialized"
+    },
+    {
+      "code": "NotApplicable",
+      "display": "Not Applicable",
+      "definition": "Not Applicable"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 6
+}

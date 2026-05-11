@@ -1,0 +1,65 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEAEmergencyEquipmentTypeCodeSystem",
+  "id": "camdhea-emergency-equipment-type",
+  "title": "CamDHEA Emergency Equipment Type",
+  "description": "Types of emergency equipment tracked at health facilities.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-emergency-equipment-type",
+  "concept": [
+    {
+      "code": "OxygenConcentrator",
+      "display": "Oxygen Concentrator",
+      "definition": "Oxygen Concentrator"
+    },
+    {
+      "code": "Ventilator",
+      "display": "Ventilator",
+      "definition": "Mechanical Ventilator"
+    },
+    {
+      "code": "Defibrillator",
+      "display": "Defibrillator",
+      "definition": "Defibrillator"
+    },
+    {
+      "code": "PatientMonitor",
+      "display": "Patient Monitor",
+      "definition": "Patient Monitor"
+    },
+    {
+      "code": "SuctionMachine",
+      "display": "Suction Machine",
+      "definition": "Suction Machine"
+    },
+    {
+      "code": "Nebulizer",
+      "display": "Nebulizer",
+      "definition": "Nebulizer"
+    },
+    {
+      "code": "InfusionPump",
+      "display": "Infusion Pump",
+      "definition": "Infusion Pump"
+    },
+    {
+      "code": "EmergencyCart",
+      "display": "Emergency Cart",
+      "definition": "Emergency Cart / Crash Cart"
+    },
+    {
+      "code": "Ambulance",
+      "display": "Ambulance",
+      "definition": "Ambulance"
+    },
+    {
+      "code": "Other",
+      "display": "Other",
+      "definition": "Other emergency equipment"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 10
+}

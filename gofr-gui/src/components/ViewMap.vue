@@ -17,16 +17,16 @@ export default {
     accessToken: 'pk.eyJ1IjoiYWxseXNoYWJhbjUiLCJhIjoiY2twbzFpODRtMDFkMTJwbWFvNXUza3hodCJ9.mhcv_KlLLtvR0x73E90WAw',
     options: {
       "center": [
-        8.521441,
-        -11.84389
+        104.9910,
+        12.5657
       ],
-      "zoom": 3,
+      "zoom": 7,
       "isFacility" : true,
       "searchOnLoad" : true,
       "hierarchyExtension": {
         "parameter": "ihe-mcsd-hierarchy-partof"
       },
-      "root": "cf12e355-a553-5875-b271-2dfb97b22355",
+      "root": "d03c5c0b-a9a0-5066-a122-03f5dc76803e",
       "includeRoot": false,
       "contextServices": [],
       "searchParameters": [

@@ -1,0 +1,18 @@
+{
+  "resourceType": "SearchParameter",
+  "id": "gofr-search-facility-level",
+  "url": "http://gofr.org/fhir/SearchParameter/gofr-search-facility-level",
+  "name": "Search by facility level",
+  "description": "Search by facility level",
+  "status": "active",
+  "experimental": false,
+  "code": "facilitylevel",
+  "base": [
+    "Location"
+  ],
+  "type": "token",
+  "expression": "Location.extension('http://camdhea.gov.kh/fhir/StructureDefinition/facility-level').valueCodeableConcept",
+  "target": [
+    "Location"
+  ]
+}

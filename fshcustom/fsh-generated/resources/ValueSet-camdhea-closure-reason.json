@@ -1,0 +1,17 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "CamDHEAClosureReasonValueSet",
+  "id": "camdhea-closure-reason",
+  "title": "CamDHEA Closure Reason ValueSet",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/ValueSet/camdhea-closure-reason",
+  "date": "2026-04-11",
+  "compose": {
+    "include": [
+      {
+        "system": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-closure-reason"
+      }
+    ]
+  }
+}

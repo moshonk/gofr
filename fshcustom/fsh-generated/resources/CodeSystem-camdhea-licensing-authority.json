@@ -1,0 +1,35 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEALicensingAuthorityCodeSystem",
+  "id": "camdhea-licensing-authority",
+  "title": "CamDHEA Licensing Authority",
+  "description": "Authority responsible for issuing and renewing the facility licence.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-licensing-authority",
+  "concept": [
+    {
+      "code": "HSD",
+      "display": "Department of Hospital Services",
+      "definition": "HSD — for larger private facilities"
+    },
+    {
+      "code": "OWS",
+      "display": "One Window Service",
+      "definition": "OWS — for smaller private facilities"
+    },
+    {
+      "code": "PHD",
+      "display": "Provincial Health Department",
+      "definition": "PHD"
+    },
+    {
+      "code": "NotApplicable",
+      "display": "Not Applicable",
+      "definition": "Not Applicable"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 4
+}

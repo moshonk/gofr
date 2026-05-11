@@ -553,6 +553,8 @@ async function startUp() {
         logger.error(`An error has occured while getting progress for ${type} and clientID ${clientId}`);
       }
       results = JSON.parse(results);
+      res.set('Cache-Control', 'no-store, no-cache, must-revalidate');
+      res.set('Pragma', 'no-cache');
       res.status(200).json(results);
     });
   });

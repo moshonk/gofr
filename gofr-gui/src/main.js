@@ -89,11 +89,21 @@ Vue.config.productionTip = false
 
 export const eventBus = new Vue()
 
-if (guiConfig.BACKEND_HOST === '.') {
-  guiConfig.BACKEND_HOST = window.location.hostname
-  guiConfig.BACKEND_PROTOCOL = window.location.protocol.replace(':', '')
+const buildBackendServer = () => {
+  if (guiConfig.BACKEND_HOST === '.') {
+    // Use same-origin in deployed environments to avoid hard dependency on backend port exposure.
+    return window.location.origin
+  }
+  const protocol = guiConfig.BACKEND_PROTOCOL || window.location.protocol.replace(':', '')
+  const host = guiConfig.BACKEND_HOST
+  const port = (guiConfig.BACKEND_PORT || '').toString().trim()
+  if (port) {
+    return protocol + '://' + host + ':' + port
+  }
+  return protocol + '://' + host
 }
-guiConfig.BACKEND_SERVER = guiConfig.BACKEND_PROTOCOL + '://' + guiConfig.BACKEND_HOST + ':' + guiConfig.BACKEND_PORT
+
+guiConfig.BACKEND_SERVER = buildBackendServer()
 
 function getDHIS2StoreConfig (callback) {
   let url = location.href

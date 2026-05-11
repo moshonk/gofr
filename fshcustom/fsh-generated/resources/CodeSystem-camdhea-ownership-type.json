@@ -1,0 +1,50 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEAOwnershipTypeCodeSystem",
+  "id": "camdhea-ownership-type",
+  "title": "CamDHEA Ownership Type",
+  "description": "Type of entity that owns or manages the facility.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-ownership-type",
+  "concept": [
+    {
+      "code": "MOH",
+      "display": "Ministry of Health",
+      "definition": "MOH"
+    },
+    {
+      "code": "OtherMinistry",
+      "display": "Other Ministry",
+      "definition": "Other Ministry"
+    },
+    {
+      "code": "NGO",
+      "display": "Non-Governmental Organization",
+      "definition": "NGO"
+    },
+    {
+      "code": "FaithBased",
+      "display": "Faith-Based Organization",
+      "definition": "Faith-Based"
+    },
+    {
+      "code": "Private",
+      "display": "Private",
+      "definition": "Private"
+    },
+    {
+      "code": "DevelopmentPartner",
+      "display": "Development Partner",
+      "definition": "Development Partner"
+    },
+    {
+      "code": "Other",
+      "display": "Other",
+      "definition": "Other"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 7
+}

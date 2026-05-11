@@ -46,7 +46,7 @@
         },
         {
           "url": "search",
-          "valueString": "Longitute|position.longitude"
+          "valueString": "Longitude|position.longitude"
         },
         {
           "url": "search",
@@ -101,77 +101,11 @@
       "extension": [
         {
           "url": "title",
-          "valueString": "Basic Details"
-        },
-        {
-          "url": "description",
-          "valueString": "Basic Details"
-        },
-        {
-          "url": "name",
-          "valueString": "Basic Details"
-        },
-        {
-          "url": "field",
-          "valueString": "Location.name"
-        },
-        {
-          "url": "field",
-          "valueString": "Location.alias"
-        },
-        {
-          "url": "field",
-          "valueString": "Location.status"
-        },
-        {
-          "url": "field",
-          "valueString": "Location.type"
-        },
-        {
-          "url": "field",
-          "valueString": "Location.partOf"
-        },
-        {
-          "url": "field",
-          "valueString": "Location.description"
-        },
-        {
-          "url": "field",
-          "valueString": "Location.physicalType"
-        }
-      ],
-      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
-    },
-    {
-      "extension": [
-        {
-          "url": "title",
-          "valueString": "Geo-Coordinates"
-        },
-        {
-          "url": "description",
-          "valueString": "Facility Geo-Coordinates"
-        },
-        {
-          "url": "name",
-          "valueString": "Geo-Coordinates"
-        },
-        {
-          "url": "field",
-          "valueString": "Location.position"
-        }
-      ],
-      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
-    },
-    {
-      "extension": [
-        {
-          "url": "title",
           "valueString": "Identifiers"
         },
         {
           "url": "description",
-          "valueString": "Facility Identifiers"
+          "valueString": "Identifiers for the facility"
         },
         {
           "url": "name",
@@ -188,19 +122,43 @@
       "extension": [
         {
           "url": "title",
-          "valueString": "Contact Details"
+          "valueString": "Facility Name"
         },
         {
           "url": "description",
-          "valueString": "Address, email, phone numbers"
+          "valueString": "Facility name and basic identity"
         },
         {
           "url": "name",
-          "valueString": "contact"
+          "valueString": "Facility Name"
         },
         {
           "url": "field",
-          "valueString": "Location.telecom"
+          "valueString": "Location.name"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.alias"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.description"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.status"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.type"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.physicalType"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.partOf"
         }
       ],
       "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
@@ -209,19 +167,43 @@
       "extension": [
         {
           "url": "title",
-          "valueString": "Address"
+          "valueString": "Classification"
         },
         {
           "url": "description",
-          "valueString": "Facility Address"
+          "valueString": "Facility classification details"
         },
         {
           "url": "name",
-          "valueString": "Address"
+          "valueString": "Classification"
         },
         {
           "url": "field",
-          "valueString": "Location.address"
+          "valueString": "Location.type"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:facilityTypeAcronym"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:facilityLevel"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:ownershipType"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:managingEntityNameUse"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:managingEntityNameScript"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:managingEntityName"
         }
       ],
       "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
@@ -230,15 +212,135 @@
       "extension": [
         {
           "url": "title",
-          "valueString": "Hours of operation"
+          "valueString": "Geographic Location"
         },
         {
           "url": "description",
-          "valueString": "Business hours"
+          "valueString": "Administrative boundary codes"
         },
         {
           "url": "name",
-          "valueString": "hoursOfOperation"
+          "valueString": "Geographic Location"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:administrativeLocation"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Physical Location"
+        },
+        {
+          "url": "description",
+          "valueString": "Geo-coordinates and physical details"
+        },
+        {
+          "url": "name",
+          "valueString": "Physical Location"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.position"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:coordinateAccuracy"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:googleMapsLink"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Administrative"
+        },
+        {
+          "url": "description",
+          "valueString": "Administrative details"
+        },
+        {
+          "url": "name",
+          "valueString": "Administrative"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.operationalStatus"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:facilityHead"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:operationalPeriod"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:closureReason"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:successorHfid"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Licensing"
+        },
+        {
+          "url": "description",
+          "valueString": "Facility licence information"
+        },
+        {
+          "url": "name",
+          "valueString": "Licensing"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:licenceStatus"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.identifier:licenceNumber"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:licensingAuthority"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:licenceDates"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Operating Hours"
+        },
+        {
+          "url": "description",
+          "valueString": "Facility availability"
+        },
+        {
+          "url": "name",
+          "valueString": "Operating Hours"
         },
         {
           "url": "field",
@@ -251,7 +353,95 @@
       "extension": [
         {
           "url": "title",
-          "valueString": "Managing Organization"
+          "valueString": "Services"
+        },
+        {
+          "url": "description",
+          "valueString": "Facility service offerings"
+        },
+        {
+          "url": "name",
+          "valueString": "Services"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Workforce Summary"
+        },
+        {
+          "url": "description",
+          "valueString": "Health worker summary (derived from HWR)"
+        },
+        {
+          "url": "name",
+          "valueString": "Workforce Summary"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:workforceSummary"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Catchment"
+        },
+        {
+          "url": "description",
+          "valueString": "Catchment villages and population"
+        },
+        {
+          "url": "name",
+          "valueString": "Catchment"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:catchmentVillage"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.extension:catchmentPopulation"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Sub-Facility"
+        },
+        {
+          "url": "description",
+          "valueString": "Sub-facility classification"
+        },
+        {
+          "url": "name",
+          "valueString": "Sub-Facility"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.partOf"
+        },
+        {
+          "url": "field",
+          "valueString": "Location.type"
+        }
+      ],
+      "url": "http://gofr.org/fhir/StructureDefinition/gofr-page-section"
+    },
+    {
+      "extension": [
+        {
+          "url": "title",
+          "valueString": "Organization"
         },
         {
           "url": "description",
@@ -259,7 +449,7 @@
         },
         {
           "url": "name",
-          "valueString": "Managing Organization"
+          "valueString": "Organization"
         },
         {
           "extension": [

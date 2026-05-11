@@ -1,0 +1,45 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEAOperationalStatusCodeSystem",
+  "id": "camdhea-operational-status",
+  "title": "CamDHEA Operational Status",
+  "description": "Current operational condition of the facility.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-operational-status",
+  "concept": [
+    {
+      "code": "Operational",
+      "display": "Operational",
+      "definition": "Operational"
+    },
+    {
+      "code": "Closed",
+      "display": "Closed",
+      "definition": "Closed"
+    },
+    {
+      "code": "Suspended",
+      "display": "Suspended",
+      "definition": "Suspended"
+    },
+    {
+      "code": "Pending",
+      "display": "Pending",
+      "definition": "Pending"
+    },
+    {
+      "code": "UnderConstruction",
+      "display": "Under Construction",
+      "definition": "Under Construction"
+    },
+    {
+      "code": "UnderRenovation",
+      "display": "Under Renovation",
+      "definition": "Under Renovation"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 6
+}

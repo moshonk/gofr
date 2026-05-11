@@ -198,9 +198,13 @@ const loadFSHFiles = () => new Promise(async (resolvePar, rejectPar) => {
   if (installed) {
     return resolvePar();
   }
-  const fshDir = config.get('builtFSHFIles');
-  const dirs = await fs.readdirSync(`${__dirname}/${fshDir}`);
+  let fshDirs = config.get('builtFSHFIles');
+  if (!Array.isArray(fshDirs)) {
+    fshDirs = [fshDirs];
+  }
   let errorOccured = false;
+  async.eachSeries(fshDirs, (fshDir, nxtFshDir) => {
+  const dirs = fs.readdirSync(`${__dirname}/${fshDir}`);
   async.eachSeries(dirs, (dir, nxtDir) => {
     let files = [];
     if (dir.split('.').length >= 2 && dir.split('.')[dir.split('.').length - 1] === 'json') {
@@ -258,6 +262,7 @@ const loadFSHFiles = () => new Promise(async (resolvePar, rejectPar) => {
         }
       });
     }, () => nxtDir());
+  }, () => nxtFshDir());
   }, () => {
     if (errorOccured) {
       return rejectPar(true);

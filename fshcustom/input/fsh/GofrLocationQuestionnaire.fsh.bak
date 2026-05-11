@@ -48,7 +48,7 @@ Usage:          #definition
 * item[0].item[4].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.type"
 * item[0].item[4].text = "Facility Types"
 * item[0].item[4].type = #choice
-* item[0].item[4].answerValueSet = "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType"
+* item[0].item[4].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-type"
 * item[0].item[4].repeats = true
 * item[0].item[4].required = true
 
@@ -88,6 +88,30 @@ Usage:          #definition
 * item[0].item[8].readOnly = true
 * item[0].item[8].answerOption.valueString = "__REPLACE__Organization.id"
 * item[0].item[8].answerOption.initialSelected = true
+
+* item[0].item[9].linkId = "Location.extension[0]"
+* item[0].item[9].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:facilityLevel.value[x]:valueCodeableConcept"
+* item[0].item[9].text = "Facility Level"
+* item[0].item[9].type = #choice
+* item[0].item[9].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-facility-level"
+* item[0].item[9].required = false
+* item[0].item[9].repeats = false
+
+* item[0].item[10].linkId = "Location.extension[1]"
+* item[0].item[10].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:ownershipType.value[x]:valueCodeableConcept"
+* item[0].item[10].text = "Ownership Type"
+* item[0].item[10].type = #choice
+* item[0].item[10].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-ownership-type"
+* item[0].item[10].required = false
+* item[0].item[10].repeats = false
+
+* item[0].item[11].linkId = "Location.operationalStatus"
+* item[0].item[11].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.operationalStatus"
+* item[0].item[11].text = "Operational Status"
+* item[0].item[11].type = #choice
+* item[0].item[11].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-operational-status"
+* item[0].item[11].required = false
+* item[0].item[11].repeats = false
 
 * item[1].linkId = "Location.identifier"
 * item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier"
@@ -148,6 +172,21 @@ Usage:          #definition
 * item[2].item[2].type = #string
 * item[2].item[2].repeats = false
 * item[2].item[2].required = false
+
+* item[2].item[3].linkId = "Location.extension[2]"
+* item[2].item[3].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:coordinateAccuracy.value[x]:valueCode"
+* item[2].item[3].text = "Coordinate Accuracy"
+* item[2].item[3].type = #choice
+* item[2].item[3].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-coordinate-accuracy"
+* item[2].item[3].required = false
+* item[2].item[3].repeats = false
+
+* item[2].item[4].linkId = "Location.extension[3]"
+* item[2].item[4].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:googleMapsLink.value[x]:valueUrl"
+* item[2].item[4].text = "Google Maps Link"
+* item[2].item[4].type = #url
+* item[2].item[4].required = false
+* item[2].item[4].repeats = false
 
 * item[3].linkId = "Location.telecom"
 * item[3].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.telecom"
@@ -292,6 +331,21 @@ Usage:          #definition
 * item[5].item[0].item[3].required = false
 * item[5].item[0].item[3].repeats = false
 
+* item[5].item[0].item[4].linkId = "Location.hoursOfOperation[0].extension[0]"
+* item[5].item[0].item[4].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.hoursOfOperation.extension:scheduleType.value[x]:valueCode"
+* item[5].item[0].item[4].text = "Schedule Type"
+* item[5].item[0].item[4].type = #choice
+* item[5].item[0].item[4].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-schedule-type"
+* item[5].item[0].item[4].required = false
+* item[5].item[0].item[4].repeats = false
+
+* item[5].item[0].item[5].linkId = "Location.hoursOfOperation[0].extension[1]"
+* item[5].item[0].item[5].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.hoursOfOperation.extension:scheduleNotes.value[x]:valueString"
+* item[5].item[0].item[5].text = "Schedule Notes"
+* item[5].item[0].item[5].type = #string
+* item[5].item[0].item[5].required = false
+* item[5].item[0].item[5].repeats = false
+
 * item[6].linkId = "Organization"
 * item[6].definition = "http://gofr.org/fhir/StructureDefinition/GOFR.IHE.mCSD.FacilityOrganization"
 * item[6].text = "Organization"
@@ -420,6 +474,307 @@ Usage:          #definition
 * item[3].item[1].item[8].type = #string
 * item[3].item[1].item[8].required = false
 * item[3].item[1].item[8].repeats = false
+
+// =========================================================================
+// item[7] — Administrative Location
+// =========================================================================
+* item[7].linkId = "Location.extension:administrativeLocation"
+* item[7].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:administrativeLocation"
+* item[7].text = "Administrative Location|Administrative boundary codes"
+* item[7].type = #group
+
+* item[7].item[0].linkId = "Location.extension[4].extension[0]"
+* item[7].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:administrativeLocation.extension:province.value[x]:valueString"
+* item[7].item[0].text = "Province Code"
+* item[7].item[0].type = #string
+* item[7].item[0].required = true
+* item[7].item[0].repeats = false
+
+* item[7].item[1].linkId = "Location.extension[4].extension[1]"
+* item[7].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:administrativeLocation.extension:district.value[x]:valueString"
+* item[7].item[1].text = "District Code"
+* item[7].item[1].type = #string
+* item[7].item[1].required = true
+* item[7].item[1].repeats = false
+
+* item[7].item[2].linkId = "Location.extension[4].extension[2]"
+* item[7].item[2].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:administrativeLocation.extension:od.value[x]:valueString"
+* item[7].item[2].text = "Operational District Code"
+* item[7].item[2].type = #string
+* item[7].item[2].required = false
+* item[7].item[2].repeats = false
+
+* item[7].item[3].linkId = "Location.extension[4].extension[3]"
+* item[7].item[3].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:administrativeLocation.extension:commune.value[x]:valueString"
+* item[7].item[3].text = "Commune Code"
+* item[7].item[3].type = #string
+* item[7].item[3].required = true
+* item[7].item[3].repeats = false
+
+* item[7].item[4].linkId = "Location.extension[4].extension[4]"
+* item[7].item[4].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:administrativeLocation.extension:village.value[x]:valueString"
+* item[7].item[4].text = "Village Code"
+* item[7].item[4].type = #string
+* item[7].item[4].required = true
+* item[7].item[4].repeats = false
+
+// =========================================================================
+// item[8] — Administrative Details
+// =========================================================================
+* item[8].linkId = "Location.extension:administrative"
+* item[8].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility"
+* item[8].text = "Administrative|Administrative details"
+* item[8].type = #group
+
+* item[8].item[0].linkId = "Location.extension[5]"
+* item[8].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:facilityHead.value[x]:valueString"
+* item[8].item[0].text = "Facility Head HWID"
+* item[8].item[0].type = #string
+* item[8].item[0].required = false
+* item[8].item[0].repeats = false
+
+* item[8].item[1].linkId = "Location.extension[6]"
+* item[8].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:operationalPeriod.value[x]:valuePeriod"
+* item[8].item[1].text = "Establishment Date"
+* item[8].item[1].type = #date
+* item[8].item[1].required = false
+* item[8].item[1].repeats = false
+
+* item[8].item[2].linkId = "Location.extension[7]"
+* item[8].item[2].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:closureReason.value[x]:valueCode"
+* item[8].item[2].text = "Closure Reason"
+* item[8].item[2].type = #choice
+* item[8].item[2].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-closure-reason"
+* item[8].item[2].required = false
+* item[8].item[2].repeats = false
+
+* item[8].item[3].linkId = "Location.extension[8]"
+* item[8].item[3].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:successorHfid.value[x]:valueReference"
+* item[8].item[3].text = "Successor Facility"
+* item[8].item[3].type = #reference
+* item[8].item[3].required = false
+* item[8].item[3].repeats = false
+
+// =========================================================================
+// item[9] — Licensing
+// =========================================================================
+* item[9].linkId = "Location.extension:licensing"
+* item[9].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility"
+* item[9].text = "Licensing|Facility licence information"
+* item[9].type = #group
+
+* item[9].item[0].linkId = "Location.extension[9]"
+* item[9].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:licenceStatus.value[x]:valueCode"
+* item[9].item[0].text = "Licence Status"
+* item[9].item[0].type = #choice
+* item[9].item[0].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-licence-status"
+* item[9].item[0].required = false
+* item[9].item[0].repeats = false
+
+* item[9].item[1].linkId = "Location.identifier:licenceNumber"
+* item[9].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.identifier"
+* item[9].item[1].text = "Licence Number"
+* item[9].item[1].type = #string
+* item[9].item[1].required = false
+* item[9].item[1].repeats = false
+
+* item[9].item[2].linkId = "Location.extension[10]"
+* item[9].item[2].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:licensingAuthority.value[x]:valueCode"
+* item[9].item[2].text = "Licensing Authority"
+* item[9].item[2].type = #choice
+* item[9].item[2].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-licensing-authority"
+* item[9].item[2].required = false
+* item[9].item[2].repeats = false
+
+* item[9].item[3].linkId = "Location.extension[11].extension[0]"
+* item[9].item[3].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:licenceDates.extension:issueDate.value[x]:valueDate"
+* item[9].item[3].text = "Licence Issue Date"
+* item[9].item[3].type = #date
+* item[9].item[3].required = false
+* item[9].item[3].repeats = false
+
+* item[9].item[4].linkId = "Location.extension[11].extension[1]"
+* item[9].item[4].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:licenceDates.extension:expiryDate.value[x]:valueDate"
+* item[9].item[4].text = "Licence Expiry Date"
+* item[9].item[4].type = #date
+* item[9].item[4].required = false
+* item[9].item[4].repeats = false
+
+// =========================================================================
+// item[10] — Emergency Equipment (repeating)
+// =========================================================================
+* item[10].linkId = "Location.extension:emergencyEquipment"
+* item[10].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:emergencyEquipment"
+* item[10].text = "Emergency Equipment|Emergency equipment records"
+* item[10].type = #group
+
+* item[10].item[0].linkId = "Location.extension[12]"
+* item[10].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:emergencyEquipment"
+* item[10].item[0].text = "Equipment Record"
+* item[10].item[0].type = #group
+* item[10].item[0].repeats = true
+* item[10].item[0].required = false
+
+* item[10].item[0].item[0].linkId = "Location.extension[12].extension[0]"
+* item[10].item[0].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:emergencyEquipment.extension:equipmentType.value[x]:valueCode"
+* item[10].item[0].item[0].text = "Equipment Type"
+* item[10].item[0].item[0].type = #choice
+* item[10].item[0].item[0].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-emergency-equipment-type"
+* item[10].item[0].item[0].required = true
+* item[10].item[0].item[0].repeats = false
+
+* item[10].item[0].item[1].linkId = "Location.extension[12].extension[1]"
+* item[10].item[0].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:emergencyEquipment.extension:quantity.value[x]:valueInteger"
+* item[10].item[0].item[1].text = "Quantity"
+* item[10].item[0].item[1].type = #integer
+* item[10].item[0].item[1].required = true
+* item[10].item[0].item[1].repeats = false
+
+* item[10].item[0].item[2].linkId = "Location.extension[12].extension[2]"
+* item[10].item[0].item[2].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:emergencyEquipment.extension:lastVerified.value[x]:valueDate"
+* item[10].item[0].item[2].text = "Last Verified Date"
+* item[10].item[0].item[2].type = #date
+* item[10].item[0].item[2].required = false
+* item[10].item[0].item[2].repeats = false
+
+* item[10].item[0].item[3].linkId = "Location.extension[12].extension[3]"
+* item[10].item[0].item[3].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:emergencyEquipment.extension:sourceSystemVerified.value[x]:valueBoolean"
+* item[10].item[0].item[3].text = "Source System Verified"
+* item[10].item[0].item[3].type = #boolean
+* item[10].item[0].item[3].required = false
+* item[10].item[0].item[3].repeats = false
+
+// =========================================================================
+// item[11] — Workforce Summary (read-only, derived)
+// =========================================================================
+* item[11].linkId = "Location.extension:workforceSummary"
+* item[11].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:workforceSummary"
+* item[11].text = "Workforce Summary|Health worker summary (derived from HWR)"
+* item[11].type = #group
+
+* item[11].item[0].linkId = "Location.extension[13]"
+* item[11].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:workforceSummary"
+* item[11].item[0].text = "Workforce Record"
+* item[11].item[0].type = #group
+* item[11].item[0].repeats = true
+* item[11].item[0].required = false
+* item[11].item[0].readOnly = true
+
+* item[11].item[0].item[0].linkId = "Location.extension[13].extension[0]"
+* item[11].item[0].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:workforceSummary.extension:cadre.value[x]:valueCodeableConcept"
+* item[11].item[0].item[0].text = "Cadre Category"
+* item[11].item[0].item[0].type = #choice
+* item[11].item[0].item[0].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-cadre-category"
+* item[11].item[0].item[0].required = false
+* item[11].item[0].item[0].repeats = false
+* item[11].item[0].item[0].readOnly = true
+
+* item[11].item[0].item[1].linkId = "Location.extension[13].extension[1]"
+* item[11].item[0].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:workforceSummary.extension:headcount.value[x]:valueInteger"
+* item[11].item[0].item[1].text = "Headcount"
+* item[11].item[0].item[1].type = #integer
+* item[11].item[0].item[1].required = false
+* item[11].item[0].item[1].repeats = false
+* item[11].item[0].item[1].readOnly = true
+
+* item[11].item[0].item[2].linkId = "Location.extension[13].extension[2]"
+* item[11].item[0].item[2].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:workforceSummary.extension:lastUpdated.value[x]:valueDateTime"
+* item[11].item[0].item[2].text = "Last Updated"
+* item[11].item[0].item[2].type = #dateTime
+* item[11].item[0].item[2].required = false
+* item[11].item[0].item[2].repeats = false
+* item[11].item[0].item[2].readOnly = true
+
+// =========================================================================
+// item[12] — Catchment
+// =========================================================================
+* item[12].linkId = "Location.extension:catchment"
+* item[12].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility"
+* item[12].text = "Catchment|Catchment villages and population"
+* item[12].type = #group
+
+* item[12].item[0].linkId = "Location.extension[14]"
+* item[12].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:catchmentVillage"
+* item[12].item[0].text = "Catchment Village"
+* item[12].item[0].type = #group
+* item[12].item[0].repeats = true
+* item[12].item[0].required = false
+
+* item[12].item[0].item[0].linkId = "Location.extension[14].extension[0]"
+* item[12].item[0].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:catchmentVillage.extension:villageCode.value[x]:valueString"
+* item[12].item[0].item[0].text = "Village Code"
+* item[12].item[0].item[0].type = #string
+* item[12].item[0].item[0].required = true
+* item[12].item[0].item[0].repeats = false
+
+* item[12].item[0].item[1].linkId = "Location.extension[14].extension[1]"
+* item[12].item[0].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:catchmentVillage.extension:dateAdded.value[x]:valueDate"
+* item[12].item[0].item[1].text = "Date Added"
+* item[12].item[0].item[1].type = #date
+* item[12].item[0].item[1].required = true
+* item[12].item[0].item[1].repeats = false
+
+* item[12].item[0].item[2].linkId = "Location.extension[14].extension[2]"
+* item[12].item[0].item[2].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:catchmentVillage.extension:dateRemoved.value[x]:valueDate"
+* item[12].item[0].item[2].text = "Date Removed"
+* item[12].item[0].item[2].type = #date
+* item[12].item[0].item[2].required = false
+* item[12].item[0].item[2].repeats = false
+
+* item[12].item[1].linkId = "Location.extension[15]"
+* item[12].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:catchmentPopulation"
+* item[12].item[1].text = "Catchment Population"
+* item[12].item[1].type = #group
+* item[12].item[1].repeats = false
+* item[12].item[1].readOnly = true
+
+* item[12].item[1].item[0].linkId = "Location.extension[15].extension[0]"
+* item[12].item[1].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:catchmentPopulation.extension:count.value[x]:valueInteger"
+* item[12].item[1].item[0].text = "Population Count"
+* item[12].item[1].item[0].type = #integer
+* item[12].item[1].item[0].required = false
+* item[12].item[1].item[0].repeats = false
+* item[12].item[1].item[0].readOnly = true
+
+* item[12].item[1].item[1].linkId = "Location.extension[15].extension[1]"
+* item[12].item[1].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:catchmentPopulation.extension:computationDate.value[x]:valueDateTime"
+* item[12].item[1].item[1].text = "Computation Date"
+* item[12].item[1].item[1].type = #dateTime
+* item[12].item[1].item[1].required = false
+* item[12].item[1].item[1].repeats = false
+* item[12].item[1].item[1].readOnly = true
+
+* item[12].item[1].item[2].linkId = "Location.extension[15].extension[2]"
+* item[12].item[1].item[2].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.extension:catchmentPopulation.extension:computationMethod.value[x]:valueCode"
+* item[12].item[1].item[2].text = "Computation Method"
+* item[12].item[1].item[2].type = #choice
+* item[12].item[1].item[2].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-catchment-computation-method"
+* item[12].item[1].item[2].required = false
+* item[12].item[1].item[2].repeats = false
+* item[12].item[1].item[2].readOnly = true
+
+// =========================================================================
+// item[13] — Sub-Facility
+// =========================================================================
+* item[13].linkId = "Location.extension:subFacility"
+* item[13].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility"
+* item[13].text = "Sub-Facility|Sub-facility classification"
+* item[13].type = #group
+
+* item[13].item[0].linkId = "Location.partOf:subFacility"
+* item[13].item[0].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.partOf"
+* item[13].item[0].text = "Parent Facility (HFID)"
+* item[13].item[0].type = #reference
+* item[13].item[0].required = false
+* item[13].item[0].repeats = false
+
+* item[13].item[1].linkId = "Location.type:subFacilityType"
+* item[13].item[1].definition = "http://gofr.org/fhir/StructureDefinition/gofr-facility#Location.type"
+* item[13].item[1].text = "Sub-Facility Type"
+* item[13].item[1].type = #choice
+* item[13].item[1].answerValueSet = "http://camdhea.gov.kh/fhir/ValueSet/camdhea-sub-facility-type"
+* item[13].item[1].required = false
+* item[13].item[1].repeats = false
 
 Instance:       GofrFacilityAddRequestQuestionnaire
 InstanceOf:     GofrQuestionnaire

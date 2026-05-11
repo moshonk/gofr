@@ -1,0 +1,35 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEAServiceAvailabilityCodeSystem",
+  "id": "camdhea-service-availability",
+  "title": "CamDHEA Service Availability",
+  "description": "Current availability status of a health service at the facility.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-service-availability",
+  "concept": [
+    {
+      "code": "Available",
+      "display": "Available",
+      "definition": "Service is currently available at the facility"
+    },
+    {
+      "code": "Unavailable",
+      "display": "Unavailable",
+      "definition": "Service is not available"
+    },
+    {
+      "code": "Seasonal",
+      "display": "Seasonal",
+      "definition": "Service is available on a seasonal basis"
+    },
+    {
+      "code": "Referral",
+      "display": "Referral",
+      "definition": "Facility can initiate referral but does not deliver directly"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 4
+}

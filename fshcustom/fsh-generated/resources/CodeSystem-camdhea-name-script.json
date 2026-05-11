@@ -1,0 +1,25 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEANameScriptCodeSystem",
+  "id": "camdhea-name-script",
+  "title": "CamDHEA Name Script",
+  "description": "Script in which a facility or entity name is recorded.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-name-script",
+  "concept": [
+    {
+      "code": "Khmer",
+      "display": "Khmer",
+      "definition": "Khmer script"
+    },
+    {
+      "code": "Latin",
+      "display": "Latin",
+      "definition": "Latin script"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 2
+}

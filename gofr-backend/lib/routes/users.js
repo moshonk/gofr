@@ -7,6 +7,35 @@ const router = express.Router();
 const logger = require('../winston');
 const fhirAxios = require('../modules/fhirAxios');
 
+const ROLE_EXT = 'http://gofr.org/fhir/StructureDefinition/gofr-ext-role';
+const ROLE_NAME_EXT = 'http://gofr.org/fhir/StructureDefinition/gofr-basic-name';
+
+router.get('/getRoles', (req, res) => {
+  logger.info('Received a request to get roles list');
+  fhirAxios.search('Basic', {
+    '_profile': 'http://gofr.org/fhir/StructureDefinition/gofr-role',
+    '_count': 100,
+  }, 'DEFAULT').then((rolesRes) => {
+    const roles = [];
+    for (const entry of (rolesRes.entry || [])) {
+      const resource = entry.resource;
+      const roleExt = (resource.extension || []).find(e => e.url === ROLE_EXT);
+      if (!roleExt) continue;
+      const nameExt = (roleExt.extension || []).find(e => e.url === ROLE_NAME_EXT);
+      const name = nameExt ? nameExt.valueString : resource.id;
+      const tasks = (roleExt.extension || [])
+        .filter(e => e.url === 'task' && e.valueReference && e.valueReference.reference)
+        .map(e => e.valueReference.reference.split('/')[1]);
+      roles.push({ id: resource.id, name, tasks });
+    }
+    logger.info(`Returning ${roles.length} roles`);
+    return res.status(200).json(roles);
+  }).catch((err) => {
+    logger.error(err);
+    return res.status(500).json({ error: 'Failed to retrieve roles' });
+  });
+});
+
 router.get('/getUsers', (req, res) => {
   logger.info('received a request to get users lists');
   fhirAxios.search('Person', { }, 'DEFAULT').then((usersRes) => {

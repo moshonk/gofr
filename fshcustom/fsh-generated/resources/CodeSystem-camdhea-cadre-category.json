@@ -1,0 +1,55 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEACadreCategoryCodeSystem",
+  "id": "camdhea-cadre-category",
+  "title": "CamDHEA Cadre Category",
+  "description": "Health workforce cadre categories for aggregate workforce summary.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-cadre-category",
+  "concept": [
+    {
+      "code": "Physician",
+      "display": "Physician",
+      "definition": "Physician"
+    },
+    {
+      "code": "Nurse",
+      "display": "Nurse",
+      "definition": "Nurse"
+    },
+    {
+      "code": "Midwife",
+      "display": "Midwife",
+      "definition": "Midwife"
+    },
+    {
+      "code": "Dentist",
+      "display": "Dentist",
+      "definition": "Dentist"
+    },
+    {
+      "code": "Pharmacist",
+      "display": "Pharmacist",
+      "definition": "Pharmacist"
+    },
+    {
+      "code": "AlliedHealth",
+      "display": "Allied Health",
+      "definition": "Allied Health Professional"
+    },
+    {
+      "code": "CommunityHealthWorker",
+      "display": "Community Health Worker",
+      "definition": "Community Health Worker"
+    },
+    {
+      "code": "AdministrativeSupport",
+      "display": "Administrative Support",
+      "definition": "Administrative and support staff"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 8
+}

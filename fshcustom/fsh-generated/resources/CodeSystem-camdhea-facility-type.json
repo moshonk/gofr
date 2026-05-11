@@ -1,0 +1,70 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CamDHEAFacilityTypeCodeSystem",
+  "id": "camdhea-facility-type",
+  "title": "CamDHEA Facility Type",
+  "description": "Type of health facility as defined by the MoH facility classification framework.",
+  "version": "1.0.0",
+  "url": "http://camdhea.gov.kh/fhir/CodeSystem/camdhea-facility-type",
+  "concept": [
+    {
+      "code": "HealthCenter",
+      "display": "Health Center",
+      "definition": "HC"
+    },
+    {
+      "code": "HealthCenterWithBed",
+      "display": "Health Center with Bed",
+      "definition": "HCB"
+    },
+    {
+      "code": "DistrictReferralHospital",
+      "display": "District Referral Hospital",
+      "definition": "RH"
+    },
+    {
+      "code": "ProvincialHospital",
+      "display": "Provincial Hospital",
+      "definition": "PH"
+    },
+    {
+      "code": "NationalHospital",
+      "display": "National Hospital",
+      "definition": "NH"
+    },
+    {
+      "code": "HealthPost",
+      "display": "Health Post",
+      "definition": "HP"
+    },
+    {
+      "code": "MedicalStore",
+      "display": "Medical Store",
+      "definition": "MS"
+    },
+    {
+      "code": "Warehouse",
+      "display": "Warehouse",
+      "definition": "WH"
+    },
+    {
+      "code": "Laboratory",
+      "display": "Laboratory",
+      "definition": "LAB"
+    },
+    {
+      "code": "BloodBank",
+      "display": "Blood Bank",
+      "definition": "BB"
+    },
+    {
+      "code": "Other",
+      "display": "Other",
+      "definition": "Other"
+    }
+  ],
+  "date": "2026-04-11",
+  "count": 11
+}
