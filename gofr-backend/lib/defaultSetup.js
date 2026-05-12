@@ -10,6 +10,46 @@ const logger = require('./winston');
 const mixin = require('./mixin');
 const fhirAxios = require('./modules/fhirAxios');
 
+const getRetrySetting = (name, fallback) => {
+  const parsed = Number.parseInt(process.env[name] || `${fallback}`, 10);
+  return Number.isNaN(parsed) ? fallback : parsed;
+};
+
+const FHIR_BOOTSTRAP_RETRY_COUNT = getRetrySetting('GOFR_FHIR_INIT_RETRIES', 24);
+const FHIR_BOOTSTRAP_RETRY_DELAY_MS = getRetrySetting('GOFR_FHIR_INIT_RETRY_DELAY_MS', 5000);
+
+const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
+
+const isRetriableFhirBootstrapError = (err) => {
+  if (!err) {
+    return false;
+  }
+  if (err.code && ['ECONNREFUSED', 'ECONNRESET', 'ETIMEDOUT', 'EAI_AGAIN'].includes(err.code)) {
+    return true;
+  }
+  if (!err.response || !err.response.status) {
+    return true;
+  }
+  return err.response.status === 404 || err.response.status >= 500;
+};
+
+const retryFhirBootstrap = async (operationName, handler) => {
+  let lastError;
+  for (let attempt = 1; attempt <= FHIR_BOOTSTRAP_RETRY_COUNT; attempt += 1) {
+    try {
+      return await handler();
+    } catch (err) {
+      lastError = err;
+      if (!isRetriableFhirBootstrapError(err) || attempt === FHIR_BOOTSTRAP_RETRY_COUNT) {
+        throw err;
+      }
+      logger.warn(`Retrying ${operationName} (${attempt}/${FHIR_BOOTSTRAP_RETRY_COUNT}) after FHIR bootstrap error: ${err.message}`);
+      await sleep(FHIR_BOOTSTRAP_RETRY_DELAY_MS);
+    }
+  }
+  throw lastError;
+};
+
 const loadKeycloakData = () => new Promise((resolve, reject) => {
   const installed = config.get('app:installed');
   const idp = config.get('app:idp');
@@ -184,7 +224,7 @@ const loadDefaultConfig = () => new Promise((resolve, reject) => {
       valueString: '{}',
     }],
   };
-  fhirAxios.update(resource, 'DEFAULT').then(() => {
+  retryFhirBootstrap('saving gofr-general-config', () => fhirAxios.update(resource, 'DEFAULT')).then(() => {
     logger.info('General Config Saved');
     return resolve();
   }).catch((err) => {

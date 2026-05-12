@@ -11,6 +11,64 @@
 <script>
 import FhirMap from "@terraframe/fhir-gis-widget/src/components/FhirMap.vue";
 
+const GEOJSON_GEOMETRY_TYPES = new Set([
+  "Point",
+  "MultiPoint",
+  "LineString",
+  "MultiLineString",
+  "Polygon",
+  "MultiPolygon",
+  "GeometryCollection",
+]);
+
+const normalizeGeoJsonGeometry = (geoJson) => {
+  if (!geoJson || typeof geoJson !== "object") {
+    return null;
+  }
+
+  if (GEOJSON_GEOMETRY_TYPES.has(geoJson.type)) {
+    return geoJson;
+  }
+
+  if (geoJson.type === "Feature") {
+    return normalizeGeoJsonGeometry(geoJson.geometry);
+  }
+
+  if (geoJson.type === "FeatureCollection" && Array.isArray(geoJson.features)) {
+    const geometries = geoJson.features
+      .map((feature) => normalizeGeoJsonGeometry(feature && feature.geometry))
+      .filter((geometry) => geometry != null);
+
+    if (geometries.length === 0) {
+      return null;
+    }
+
+    if (geometries.length === 1) {
+      return geometries[0];
+    }
+
+    return {
+      type: "GeometryCollection",
+      geometries,
+    };
+  }
+
+  return null;
+};
+
+const GofrFhirMap = {
+  extends: FhirMap,
+  methods: {
+    ...FhirMap.methods,
+    parseGeoJson(resource) {
+      const parsedGeometry = FhirMap.methods.parseGeoJson.call(this, resource);
+      const normalizedGeometry = normalizeGeoJsonGeometry(parsedGeometry);
+
+      return normalizedGeometry || parsedGeometry;
+    },
+  },
+};
+
 export default {
   name: "App",
   data: () => ({
@@ -75,7 +133,7 @@ export default {
   }),
 
   components: {
-    FhirMap,
+    FhirMap: GofrFhirMap,
   },
   computed: {
     fhirServerUrl() {
