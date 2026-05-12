@@ -21,6 +21,17 @@ services:
     volumes:
       - redis-data:/data
 
+  fhir-db:
+    image: postgres:14-alpine
+    container_name: fhir-db
+    restart: always
+    environment:
+      - POSTGRES_DB=hapi
+      - POSTGRES_USER=hapi
+      - POSTGRES_PASSWORD=hapi
+    volumes:
+      - fhir-db-data:/var/lib/postgresql/data
+
   fhir:
     container_name: hapi-fhir
     image: hapiproject/hapi:v5.5.2-distroless
@@ -29,7 +40,14 @@ services:
     restart: always
     depends_on:
       - redis
+      - fhir-db
     environment:
+      - spring.datasource.url=jdbc:postgresql://fhir-db:5432/hapi
+      - spring.datasource.username=hapi
+      - spring.datasource.password=hapi
+      - spring.datasource.driverClassName=org.postgresql.Driver
+      - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL95Dialect
+      - spring.jpa.hibernate.ddl-auto=update
       # add mcsd ig
       - hapi.fhir.implementationguides.mcsd.name=ihe.iti.mcsd
       - hapi.fhir.implementationguides.mcsd.version=3.5.0
@@ -49,7 +67,7 @@ services:
       - spring.jpa.properties.hibernate.search.backend.type=lucene
       - spring.jpa.properties.hibernate.search.backend.analysis.configurer=ca.uhn.fhir.jpa.search.HapiLuceneAnalysisConfigurer
       - spring.jpa.properties.hibernate.search.backend.directory.type=local-filesystem
-      - spring.jpa.properties.hibernate.search.backend.directory.root=target/lucenefiles
+      - spring.jpa.properties.hibernate.search.backend.directory.root=/data/hapi/lucenefiles
       - spring.jpa.properties.hibernate.search.backend.lucene_version=lucene_current
     volumes:
       - hapi-data:/data/hapi
@@ -69,9 +87,11 @@ services:
       - mCSD__server__basePath=fhir
       - app__site__path=/src/gofr-backend/docker-site
       - app__core__path=/src/gofr-backend/lib
-      - app__installed=${false}
+      - app__installed=false
       - app__idp=gofr
       - keycloak__baseURL=http://keycloak:8084/auth
+      - GOFR_FHIR_INIT_RETRIES=24
+      - GOFR_FHIR_INIT_RETRY_DELAY_MS=5000
       - REDIS_HOST=redis
     ports:
       - "4000:4000"
@@ -87,3 +107,4 @@ networks:
 volumes:
   redis-data:
   hapi-data:
+  fhir-db-data:
