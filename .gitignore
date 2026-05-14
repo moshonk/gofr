@@ -36,3 +36,5 @@ tests/screenshot*
 /.idea
 /log
 instant/docker/.env
+fshcustom/fsh-generated/resources
+fshcustom/fsh-generated/resources/
