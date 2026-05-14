@@ -7,6 +7,11 @@ RUN apt-get -qq update \
 # Copy local repo into image
 COPY . /src/
 
+# build the packaged GUI from gofr-gui source before docker-site is assembled
+WORKDIR /src/gofr-gui
+RUN npm install \
+    && ./node_modules/.bin/vue-cli-service build
+
 # install backend deps
 WORKDIR /src/gofr-backend
 RUN npm install
