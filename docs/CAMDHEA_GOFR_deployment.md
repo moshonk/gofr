@@ -61,9 +61,43 @@ Verify:
 docker --version
 docker compose version
 ```
-You should see versions for both. If `docker compose version` fails but
-`docker-compose --version` works, replace `docker compose` with
-`docker-compose` in the commands below.
+You should see versions for both.
+
+> **macOS alternative — Homebrew + Colima (no Docker Desktop required)**
+>
+> If you prefer not to install Docker Desktop, you can use
+> [Homebrew](https://brew.sh) and [Colima](https://github.com/abiosoft/colima):
+>
+> 1. Install Homebrew (requires admin/sudo for the first run):
+>    ```bash
+>    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+>    ```
+> 2. Install the Docker CLI, Docker Compose plugin, buildx plugin, and Colima:
+>    ```bash
+>    brew install docker docker-compose docker-buildx colima
+>    ```
+> 3. Register the Compose plugin so `docker compose` works:
+>    ```bash
+>    mkdir -p ~/.docker
+>    # Add cliPluginsExtraDirs to ~/.docker/config.json
+>    python3 -c "
+>    import json, os
+>    path = os.path.expanduser('~/.docker/config.json')
+>    cfg = json.load(open(path)) if os.path.exists(path) else {}
+>    cfg.setdefault('cliPluginsExtraDirs', []).append('/opt/homebrew/lib/docker/cli-plugins')
+>    json.dump(cfg, open(path,'w'), indent=2)
+>    "
+>    ```
+> 4. Start the Docker daemon with enough resources (HAPI FHIR requires at least 6 GiB):
+>    ```bash
+>    colima start --cpu 4 --memory 8
+>    ```
+>    On subsequent Mac restarts, run the same command — Colima remembers the
+>    settings, but you must start it manually each session.
+>    > ⚠️ The default `colima start` (2 GiB) is **not enough**: HAPI FHIR will
+>    > appear to start but hang at JVM initialization and never serve requests.
+>
+> After these steps, `docker --version` and `docker compose version` should both work.
 
 ---
 
@@ -224,6 +258,23 @@ browser cache.
 This usually means Docker doesn't have enough memory. In Docker Desktop go to
 **Settings → Resources** and raise the memory limit to **at least 6 GB**,
 then run `docker compose up -d --build` again.
+
+### HAPI FHIR never starts / `localhost:4000` gives `ERR_EMPTY_RESPONSE`
+HAPI FHIR requires significant JVM heap. If it starts, pegs a CPU core at
+~99 % for more than a few minutes, and its logs stop at
+`HHH000400: Using dialect`, the Docker VM doesn't have enough RAM and the JVM
+is thrashing garbage collection.
+
+- **Docker Desktop**: Settings → Resources → Memory → set to **at least 6 GB**.
+- **Colima**: restart with more memory:
+
+  ```bash
+  docker compose down
+  colima stop
+  colima start --cpu 4 --memory 8
+  cd /path/to/gofr/instant/docker
+  docker compose up -d
+  ```
 
 ---
 
