@@ -53,8 +53,9 @@ import urllib.request
 from collections import OrderedDict
 from datetime import datetime
 
-CSV_PATH = "/root/development/gofr/datasets/combined.csv"
-FHIR_BASE = "http://localhost:8080/fhir/DEFAULT"
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+CSV_PATH = os.environ.get("COMBINED_CSV", os.path.join(REPO_ROOT, "datasets", "combined.csv"))
+FHIR_BASE = os.environ.get("FHIR_BASE", "http://localhost:8080/fhir/DEFAULT")
 BATCH_SIZE = 50
 VALIDATOR_PATH = os.path.join(os.path.dirname(__file__), "validate_jurisdiction_pairs.py")
 
