@@ -1,4 +1,6 @@
-FROM node:fermium-bullseye
+FROM node:18-bullseye
+
+ENV NODE_OPTIONS=--openssl-legacy-provider
 
 RUN apt-get -qq update \
     && apt-get install -y --no-install-recommends git wget ca-certificates \
