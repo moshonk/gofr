@@ -14,7 +14,7 @@
     gofr_repo: "https://github.com/ddhmoh-tech/Facility-Registry.git"
     gofr_repo_clone_url: "{{ gofr_repo }}"
     gofr_repo_key_file: ""
-    gofr_version: "main"
+    gofr_version: "camdhea-features"
     gofr_install_dir: "/home/{{ user }}/gofr"
     gofr_compose_dir: "{{ gofr_install_dir }}/instant/docker"
     gofr_compose_project: "gofr"
